@@ -5,14 +5,68 @@ import {View, Text, StyleSheet} from 'react-native';
 // 함수를 통해 사용자 지정 컴포넌트(예제에선 App)를 만들어줍니다.
 // return 값에 화면 구성 요소를 작성합니다.
 const App = () => {
-  return <View style={styles.container}></View>;
+  return (
+    <View style = {styles.container}>
+
+      <View style = {styles.upcontainer}>
+        <View style = {styles.upcontainer1}><Text>powderblue</Text></View>
+      </View>
+
+      <View style = {styles.downcontainer}>
+        <View style = {styles.downcontainer1}>
+          <View style = {styles.dcontainer1_1}></View>
+          <View style = {styles.dcontainer1_2}></View>
+        </View>
+        <View style = {styles.downcontainer2}>
+          <View style = {styles.dcontainer2_1}></View>
+        </View>
+      </View>
+
+    </View>
+
+  );
 };
 
 // StyleSheet를 사용하여 HTML의 CSS와 유사한 역할을 합니다.
 const styles = StyleSheet.create({
-  container: {
+  container : {
+    flex : 1,
+  },
+
+  upcontainer : {
     flex: 1,
-    backgroundColor: 'red',
+  },
+
+  upcontainer1 : {
+    flex : 1,
+    backgroundColor : 'powderblue',
+  },
+
+  downcontainer : {
+    flex  : 3,
+    flexDirection : 'row',
+  },
+
+  downcontainer1 : {
+    flex  : 1,
+    flexDirection : 'column',
+  },
+
+  downcontainer2 : {
+    flex : 1,
+  },
+
+  dcontainer1_1 : {
+    flex : 1,
+    backgroundColor : 'yellow',
+  },
+  dcontainer1_2 : {
+    flex : 2,
+    backgroundColor : 'lavender',
+  },
+  dcontainer2_1 : {
+    flex : 1,
+    backgroundColor : 'pink',
   },
 });
 
