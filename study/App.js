@@ -9,17 +9,17 @@ const App = () => {
     <View style = {styles.container}>
 
       <View style = {styles.upcontainer}>
-        <View style = {styles.upcontainer1}>
-          <Text style = {styles.powderblue}>powderblue</Text></View>
+        <View style = {styles.powderblue}>
+          <Text>powderblue</Text></View>
       </View>
 
       <View style = {styles.downcontainer}>
         <View style = {styles.downcontainer1}>
-          <View style = {styles.dcontainer1_1}><Text style = {styles.yellow}>yellow</Text></View>
-          <View style = {styles.dcontainer1_2}><Text style = {styles}>lavender</Text></View>
+          <View style = {styles.yellow}><Text>yellow</Text></View>
+          <View style = {styles.lavender}><Text>lavender</Text></View>
         </View>
-        <View style = {styles.downcontainer2}>
-          <View style = {styles.dcontainer2_1}><Text style = {styles}>pink</Text></View>
+        <View style = {styles.pink}>
+          <View><Text> pink</Text></View>
         </View>
       </View>
 
@@ -38,9 +38,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  upcontainer1 : {
+  powderblue : {
     flex : 1,
     backgroundColor : 'powderblue',
+    justifyContent : 'center',
+    alignItems : 'center',
   },
 
   downcontainer : {
@@ -53,35 +55,25 @@ const styles = StyleSheet.create({
     flexDirection : 'column',
   },
 
-  downcontainer2 : {
-    flex : 1,
-  },
-
-  dcontainer1_1 : {
-    flex : 1,
-    backgroundColor : 'yellow',
-  },
-  dcontainer1_2 : {
-    flex : 2,
-    backgroundColor : 'lavender',
-  },
-  dcontainer2_1 : {
+  pink : {
     flex : 1,
     backgroundColor : 'pink',
-  },
-
-  powderblue : {
-    justifyContent : 'center',
-  },
-
-  yellow :  {
-    flex : 1,
     justifyContent : 'center',
     alignItems : 'center',
   },
 
-
-
+  yellow : {
+    flex : 1,
+    backgroundColor : 'yellow',
+    justifyContent : 'center',
+    alignItems : 'center',
+  },
+  lavender : {
+    flex : 2,
+    backgroundColor : 'lavender',
+    justifyContent : 'center',
+    alignItems : 'center',
+  },
 
 });
 
