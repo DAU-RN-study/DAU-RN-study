@@ -8,30 +8,9 @@ const App = () => {
   return (
     <View style={styles.container}>
       <View style={styles.highContainer}>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-        <Text style={styles.text}>Hello</Text>
-      </View>
-
-      <View style={styles.lowContainer}>
-        <View style={styles.leftContainer}>
-          <View style={styles.yellow}></View>
-          <View style={styles.lavender}></View>
-        </View>
-
-        <View style={styles.rightContainer}></View>
+        <View style={styles.highWhite}></View>
+        <View style={styles.highBlack}></View>
+        <View style={styles.highYellow}></View>
       </View>
     </View>
   );
@@ -46,33 +25,15 @@ const styles = StyleSheet.create({
   },
   highContainer: {
     flex: 1,
-    backgroundColor: 'powderblue',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-  },
-  lowContainer: {
-    flex: 3,
     flexDirection: 'row',
   },
-  leftContainer: {
+  highWhite: {
     flex: 1,
-    flexDirection: 'column',
+    backgroundColor: 'white',
   },
-  yellow: {
+  highBlack: {
     flex: 1,
-    backgroundColor: 'yellow',
-  },
-  lavender: {
-    flex: 2,
-    backgroundColor: 'lavender',
-  },
-  rightContainer: {
-    flex: 1,
-    backgroundColor: 'pink',
-  },
-  text: {
-    color: 'red',
+    backgroundColor: 'black',
   },
 });
 
