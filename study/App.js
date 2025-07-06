@@ -6,24 +6,50 @@ import {View, Text, StyleSheet} from 'react-native';
 // return 값에 화면 구성 요소를 작성합니다.
 const App = () => {
   return (
-    <View style = {styles.container}>
+   <View style = {styles.container}>
+      {/* 위쪽 */}
+      <View style = {styles.row5container}>
+        {/* 위쪽 왼쪽 */}
+        <View style = {styles.col2container}>
+          {/* 위쪽 왼쪽 위쪽 */}
+          <View style = {styles.row3container}>
+            <View style = {styles.col3container}>
+              <View style = {styles.whi2container}></View>
+              <View style = {styles.blu1container}></View>
+            </View>
+            <View style = {styles.col2container}>
+              <View style = {styles.bla2container}></View>
+            </View>
+          </View>
+          {/* 위쪽 왼쪽 아래쪽 */}
+          <View style = {styles.row2container}>
+            <View style = {styles.whi2container}></View>
+          </View>
+        </View>
 
-      <View style = {styles.upcontainer}>
-        <View style = {styles.upcontainer1}><Text>powderblue</Text></View>
+        {/* 위쪽 오른쪽 */}
+        <View style = {styles.col1container}>
+          <View style = {styles.yel2container}></View>
+          <View style = {styles.blu3container}></View>
+        </View>
       </View>
 
-      <View style = {styles.downcontainer}>
-        <View style = {styles.downcontainer1}>
-          <View style = {styles.dcontainer1_1}></View>
-          <View style = {styles.dcontainer1_2}></View>
+      {/* 아래쪽 */}
+      <View style = {styles.col2container}>
+
+        {/* 아래 위 */}
+        <View style = {styles.row1container}>
+          <View style = {styles.red1container}></View>
         </View>
-        <View style = {styles.downcontainer2}>
-          <View style = {styles.dcontainer2_1}></View>
+
+        {/* 아래 아래 */}
+        <View style = {styles.row1container}>
+          <View style = {styles.yel1container}></View>
+          <View style = {styles.bla2container}></View>
         </View>
+
       </View>
-
-    </View>
-
+   </View>
   );
 };
 
@@ -33,41 +59,77 @@ const styles = StyleSheet.create({
     flex : 1,
   },
 
-  upcontainer : {
-    flex: 1,
-  },
-
-  upcontainer1 : {
+  row1container : {
     flex : 1,
-    backgroundColor : 'powderblue',
-  },
-
-  downcontainer : {
-    flex  : 3,
     flexDirection : 'row',
   },
 
-  downcontainer1 : {
-    flex  : 1,
+  row2container : {
+    flex : 2, 
+    flexDirection : 'row',
+  },
+
+  row3container : {
+    flex : 3, 
+    flexDirection : 'row',
+  },
+
+  row5container : {
+    flex : 5, 
+    flexDirection : 'row',
+  },
+
+  col1container : {
+    flex : 1,
+    flexDirection : 'column'
+  },
+
+  col2container : {
+    flex : 2,
     flexDirection : 'column',
   },
 
-  downcontainer2 : {
-    flex : 1,
+  col3container : {
+    flex : 3,
+    flexDirection : 'column',
   },
 
-  dcontainer1_1 : {
+  red1container : {
+    flex : 1,
+    backgroundColor : 'red',
+  },
+
+  yel1container : {
     flex : 1,
     backgroundColor : 'yellow',
   },
-  dcontainer1_2 : {
+
+  yel2container : {
     flex : 2,
-    backgroundColor : 'lavender',
+    backgroundColor : 'yellow',
   },
-  dcontainer2_1 : {
+
+  whi2container : {
+    flex : 2,
+    backgroundColor : 'white',
+  },
+
+  blu1container : {
     flex : 1,
-    backgroundColor : 'pink',
+    backgroundColor : 'blue',
   },
+
+  blu3container : {
+    flex : 3,
+    backgroundColor : 'blue',
+  },
+
+  bla2container : {
+    flex : 2,
+    backgroundColor : 'black',
+  },
+
+
 });
 
 // 다음과 같이 앱 전체에서 사용하기 위해 JavaScript의 내보내기 기본값으로
