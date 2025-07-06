@@ -5,7 +5,36 @@ import {View, Text, StyleSheet} from 'react-native';
 // 함수를 통해 사용자 지정 컴포넌트(예제에선 App)를 만들어줍니다.
 // return 값에 화면 구성 요소를 작성합니다.
 const App = () => {
-  return <View style={styles.container}></View>;
+  return (
+    <View style={styles.container}>
+      <View style={styles.highContainer}>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+        <Text style={styles.text}>Hello</Text>
+      </View>
+
+      <View style={styles.lowContainer}>
+        <View style={styles.leftContainer}>
+          <View style={styles.yellow}></View>
+          <View style={styles.lavender}></View>
+        </View>
+
+        <View style={styles.rightContainer}></View>
+      </View>
+    </View>
+  );
 };
 
 // StyleSheet를 사용하여 HTML의 CSS와 유사한 역할을 합니다.
@@ -13,6 +42,37 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'red',
+    flexDirection: 'column',
+  },
+  highContainer: {
+    flex: 1,
+    backgroundColor: 'powderblue',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
+  lowContainer: {
+    flex: 3,
+    flexDirection: 'row',
+  },
+  leftContainer: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  yellow: {
+    flex: 1,
+    backgroundColor: 'yellow',
+  },
+  lavender: {
+    flex: 2,
+    backgroundColor: 'lavender',
+  },
+  rightContainer: {
+    flex: 1,
+    backgroundColor: 'pink',
+  },
+  text: {
+    color: 'red',
   },
 });
 
