@@ -6,50 +6,25 @@ import {View, Text, StyleSheet} from 'react-native';
 // return 값에 화면 구성 요소를 작성합니다.
 const App = () => {
   return (
-   <View style = {styles.container}>
-      {/* 위쪽 */}
-      <View style = {styles.row5container}>
-        {/* 위쪽 왼쪽 */}
-        <View style = {styles.col2container}>
-          {/* 위쪽 왼쪽 위쪽 */}
-          <View style = {styles.row3container}>
-            <View style = {styles.col3container}>
-              <View style = {styles.whi2container}></View>
-              <View style = {styles.blu1container}></View>
-            </View>
-            <View style = {styles.col2container}>
-              <View style = {styles.bla2container}></View>
-            </View>
-          </View>
-          {/* 위쪽 왼쪽 아래쪽 */}
-          <View style = {styles.row2container}>
-            <View style = {styles.whi2container}></View>
-          </View>
-        </View>
+    <View style = {styles.container}>
 
-        {/* 위쪽 오른쪽 */}
-        <View style = {styles.col1container}>
-          <View style = {styles.yel2container}></View>
-          <View style = {styles.blu3container}></View>
+      <View style = {styles.upcontainer}>
+        <View style = {styles.upcontainer1}>
+          <Text style = {styles.powderblue}>powderblue</Text></View>
+      </View>
+
+      <View style = {styles.downcontainer}>
+        <View style = {styles.downcontainer1}>
+          <View style = {styles.dcontainer1_1}><Text style = {styles.yellow}>yellow</Text></View>
+          <View style = {styles.dcontainer1_2}><Text style = {styles}>lavender</Text></View>
+        </View>
+        <View style = {styles.downcontainer2}>
+          <View style = {styles.dcontainer2_1}><Text style = {styles}>pink</Text></View>
         </View>
       </View>
 
-      {/* 아래쪽 */}
-      <View style = {styles.col2container}>
+    </View>
 
-        {/* 아래 위 */}
-        <View style = {styles.row1container}>
-          <View style = {styles.red1container}></View>
-        </View>
-
-        {/* 아래 아래 */}
-        <View style = {styles.row1container}>
-          <View style = {styles.yel1container}></View>
-          <View style = {styles.bla2container}></View>
-        </View>
-
-      </View>
-   </View>
   );
 };
 
@@ -59,75 +34,53 @@ const styles = StyleSheet.create({
     flex : 1,
   },
 
-  row1container : {
+  upcontainer : {
+    flex: 1,
+  },
+
+  upcontainer1 : {
     flex : 1,
+    backgroundColor : 'powderblue',
+  },
+
+  downcontainer : {
+    flex  : 3,
     flexDirection : 'row',
   },
 
-  row2container : {
-    flex : 2, 
-    flexDirection : 'row',
-  },
-
-  row3container : {
-    flex : 3, 
-    flexDirection : 'row',
-  },
-
-  row5container : {
-    flex : 5, 
-    flexDirection : 'row',
-  },
-
-  col1container : {
-    flex : 1,
-    flexDirection : 'column'
-  },
-
-  col2container : {
-    flex : 2,
+  downcontainer1 : {
+    flex  : 1,
     flexDirection : 'column',
   },
 
-  col3container : {
-    flex : 3,
-    flexDirection : 'column',
-  },
-
-  red1container : {
+  downcontainer2 : {
     flex : 1,
-    backgroundColor : 'red',
   },
 
-  yel1container : {
+  dcontainer1_1 : {
     flex : 1,
     backgroundColor : 'yellow',
   },
-
-  yel2container : {
+  dcontainer1_2 : {
     flex : 2,
-    backgroundColor : 'yellow',
+    backgroundColor : 'lavender',
   },
-
-  whi2container : {
-    flex : 2,
-    backgroundColor : 'white',
-  },
-
-  blu1container : {
+  dcontainer2_1 : {
     flex : 1,
-    backgroundColor : 'blue',
+    backgroundColor : 'pink',
   },
 
-  blu3container : {
-    flex : 3,
-    backgroundColor : 'blue',
+  powderblue : {
+    justifyContent : 'center',
   },
 
-  bla2container : {
-    flex : 2,
-    backgroundColor : 'black',
+  yellow :  {
+    flex : 1,
+    justifyContent : 'center',
+    alignItems : 'center',
   },
+
+
 
 
 });
