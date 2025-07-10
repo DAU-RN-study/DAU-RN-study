@@ -6,15 +6,29 @@ import {View, Text, StyleSheet} from 'react-native';
 // return 값에 화면 구성 요소를 작성합니다.
 const App = () => {
   return <View style={styles.container}>
-    <View style={styles.container1}><Text>Powderblue</Text></View>
-    <View style={styles.container2}>
-      <View style={styles.container3}>
-        <View style={styles.container4}><Text>Yellow</Text></View>
-        <View style={styles.container5}><Text>Lavender</Text></View>
-      </View>
-      <View style={styles.container6}><Text>Pink</Text></View>
-    </View>
-  </View>;
+            <View style={styles.container1}>
+              <View style={styles.container1_1}>
+                <View style={styles.container1_1_1}></View>
+                <View style={styles.container1_1_2}></View>
+              </View>
+              <View style={styles.container1_2}></View>
+              <View style={styles.container1_3}>
+                <View style={styles.container1_3_1}></View>
+                <View style={styles.container1_3_2}></View>
+              </View>
+            </View>
+            <View style={styles.container2}>
+              <View style={styles.container2_1}></View>
+              <View style={styles.container2_2}></View>
+            </View>
+            <View style={styles.container3}>
+              <View style={styles.container3_1}></View>
+              <View style={styles.container3_2}>
+                <View style={styles.container3_2_1}></View>
+                <View style={styles.container3_2_2}></View>
+              </View>
+            </View>
+         </View>;
 };
 
 // StyleSheet를 사용하여 HTML의 CSS와 유사한 역할을 합니다.
@@ -26,41 +40,86 @@ const styles = StyleSheet.create({
   },
 
   container1:{
-    flex:0.2,
-    backgroundColor: 'powderblue',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  container2:{
-    flex: 0.8,
+    flex: 0.4,
     flexDirection: 'row',
   },
 
-  container3:{
-    flex: 1,
+  container1_1:{
+    flex: 0.35,
     flexDirection: 'column',
-    
   },
 
-  container4:{
-    flex:1,
+  container1_1_1:{
+    flex: 0.7,
+    backgroundColor: 'white',
+  },
+  
+  container1_1_2:{
+    flex: 0.3,
+    backgroundColor: 'blue',
+  },
+
+  container1_2:{
+    flex:0.3,
+    backgroundColor: 'black',
+  },
+  
+  container1_3:{
+    flex: 0.35,
+    flexDirection: 'column',
+  },
+
+  container1_3_1:{
+    flex: 0.7,
     backgroundColor: 'yellow',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 
-  container5:{
-    flex:1,
-    backgroundColor: 'lavender',
+  container1_3_2:{
+    flex:0.3,
+    backgroundColor:'blue',
+
   },
 
-  container6:{
-    flex: 1,
-    backgroundColor: 'pink',
-    alignItems: 'center',
-    justifyContent: 'center',
+  container2:{
+    flex: 0.3,
+    flexDirection: 'row',
   },
+
+  container2_1:{
+    flex: 0.65,
+    backgroundColor: 'white',
+  },
+
+  container2_2:{
+    flex: 0.35,
+    backgroundColor: 'blue',
+  },
+
+  container3:{
+    flex: 0.3,
+    flexDirection: 'column',
+  },
+
+  container3_1:{
+    flex: 0.5,
+    backgroundColor: 'red',
+  },
+
+  container3_2:{
+    flex: 0.5,
+    flexDirection: 'row',
+  },
+
+  container3_2_1:{
+    flex: 0.35,
+    backgroundColor: 'yellow'
+  },
+
+  container3_2_2:{
+    flex: 0.65,
+    backgroundColor: 'black'
+  }
+
 
 });
 
