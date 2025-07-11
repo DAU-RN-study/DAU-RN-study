@@ -23,14 +23,14 @@ const App = () => {
 
       <View style={styles.firstBox}>
         <View style={styles.high}> 
-          <View style={styles.r1_whiteBox} />
-          <View style={styles.r1_blackBox} />
-          <View style={styles.r1_yellowBox} />
+          <View style={styles.f_whiteBox} />
+          <View style={styles.f_blackBox} />
+          <View style={styles.f_yellowBox} />
         </View>
         <View style={styles.low}>
-          <View style={styles.r1_blueBox} />
-          <View style={styles.r1_blackBox} />
-          <View style={styles.r1_blueBox} />
+          <View style={styles.f_blueBox} />
+          <View style={styles.f_blackBox} />
+          <View style={styles.f_blueBox} />
         </View>
       </View>
 
@@ -127,19 +127,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
-  r1_whiteBox: {
+  f_whiteBox: {
     flex: 0.4,
     backgroundColor: 'white',
   },
-  r1_blackBox: {
+  f_blackBox: {
     flex: 0.2,
     backgroundColor: 'black',
   },
-  r1_yellowBox: {
+  f_yellowBox: {
     flex: 0.4,
     backgroundColor: 'yellow',
   },
-  r1_blueBox: {
+  f_blueBox: {
     flex: 0.4,
     backgroundColor: 'blue',
   },
