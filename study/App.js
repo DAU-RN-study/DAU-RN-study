@@ -6,25 +6,50 @@ import {View, Text, StyleSheet} from 'react-native';
 // return 값에 화면 구성 요소를 작성합니다.
 const App = () => {
   return (
-    <View style = {styles.container}>
+   <View style = {styles.container}>
+      {/* 위쪽 */}
+      <View style = {styles.row5container}>
+        {/* 위쪽 왼쪽 */}
+        <View style = {styles.col2container}>
+          {/* 위쪽 왼쪽 위쪽 */}
+          <View style = {styles.row3container}>
+            <View style = {styles.col3container}>
+              <View style = {styles.whi2container}></View>
+              <View style = {styles.blu1container}></View>
+            </View>
+            <View style = {styles.col2container}>
+              <View style = {styles.bla2container}></View>
+            </View>
+          </View>
+          {/* 위쪽 왼쪽 아래쪽 */}
+          <View style = {styles.row2container}>
+            <View style = {styles.whi2container}></View>
+          </View>
+        </View>
 
-      <View style = {styles.upcontainer}>
-        <View style = {styles.powderblue}>
-          <Text>powderblue</Text></View>
+        {/* 위쪽 오른쪽 */}
+        <View style = {styles.col1container}>
+          <View style = {styles.yel2container}></View>
+          <View style = {styles.blu3container}></View>
+        </View>
       </View>
 
-      <View style = {styles.downcontainer}>
-        <View style = {styles.downcontainer1}>
-          <View style = {styles.yellow}><Text>yellow</Text></View>
-          <View style = {styles.lavender}><Text>lavender</Text></View>
+      {/* 아래쪽 */}
+      <View style = {styles.col2container}>
+
+        {/* 아래 위 */}
+        <View style = {styles.row1container}>
+          <View style = {styles.red1container}></View>
         </View>
-        <View style = {styles.pink}>
-          <View><Text> pink</Text></View>
+
+        {/* 아래 아래 */}
+        <View style = {styles.row1container}>
+          <View style = {styles.yel1container}></View>
+          <View style = {styles.bla2container}></View>
         </View>
+
       </View>
-
-    </View>
-
+   </View>
   );
 };
 
@@ -34,46 +59,76 @@ const styles = StyleSheet.create({
     flex : 1,
   },
 
-  upcontainer : {
-    flex: 1,
-  },
-
-  powderblue : {
+  row1container : {
     flex : 1,
-    backgroundColor : 'powderblue',
-    justifyContent : 'center',
-    alignItems : 'center',
-  },
-
-  downcontainer : {
-    flex  : 3,
     flexDirection : 'row',
   },
 
-  downcontainer1 : {
-    flex  : 1,
+  row2container : {
+    flex : 2, 
+    flexDirection : 'row',
+  },
+
+  row3container : {
+    flex : 3, 
+    flexDirection : 'row',
+  },
+
+  row5container : {
+    flex : 5, 
+    flexDirection : 'row',
+  },
+
+  col1container : {
+    flex : 1,
+    flexDirection : 'column'
+  },
+
+  col2container : {
+    flex : 2,
     flexDirection : 'column',
   },
 
-  pink : {
-    flex : 1,
-    backgroundColor : 'pink',
-    justifyContent : 'center',
-    alignItems : 'center',
+  col3container : {
+    flex : 3,
+    flexDirection : 'column',
   },
 
-  yellow : {
+  red1container : {
+    flex : 1,
+    backgroundColor : 'red',
+  },
+
+  yel1container : {
     flex : 1,
     backgroundColor : 'yellow',
-    justifyContent : 'center',
-    alignItems : 'center',
   },
-  lavender : {
+
+  yel2container : {
     flex : 2,
-    backgroundColor : 'lavender',
-    justifyContent : 'center',
-    alignItems : 'center',
+    backgroundColor : 'yellow',
   },
+
+  whi2container : {
+    flex : 2,
+    backgroundColor : 'white',
+  },
+
+  blu1container : {
+    flex : 1,
+    backgroundColor : 'blue',
+  },
+
+  blu3container : {
+    flex : 3,
+    backgroundColor : 'blue',
+  },
+
+  bla2container : {
+    flex : 2,
+    backgroundColor : 'black',
+  },
+
 
 });
 
