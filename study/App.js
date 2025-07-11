@@ -16,6 +16,15 @@ const App = () => {
       <View style={styles.container2_2}></View>
       <View style={styles.container2_3}></View>
     </View>
+    <View style={styles.container3}>
+      <View style={styles.container3_1}></View>
+      <View style={styles.container3_2}></View>
+    </View>
+    <View style={{flex: .5, backgroundColor: 'red'}}></View>
+    <View style={styles.container5}>
+      <View style={styles.container5_1}></View>
+      <View style={styles.container5_2}></View>
+    </View>
   </View>
 )};
 
@@ -23,10 +32,10 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'column'
   },
   container1: {
-    flex: 1,
+    flex: .8,
     flexDirection: 'row'
   },
   container1_1:{
@@ -38,11 +47,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'black'
   },
   container1_3:{
-    flex: 2,
+    flex: 1,
     backgroundColor: 'yellow'
   },
   container2: {
-    flex: 1,
+    flex: .5,
     flexDirection: 'row'
   },
   container2_1:{
@@ -54,17 +63,33 @@ const styles = StyleSheet.create({
     backgroundColor: 'black'
   },
   container2_3:{
-    flex: 2,
+    flex: 1,
     backgroundColor: 'blue'
   },
-  container: {
+  container3: {
     flex: 1,
     backgroundColor: 'red',
+    flexDirection: 'row'
   },
-  container: {
+  container3_1: {
+    flex: 2,
+    backgroundColor: 'white',
+  },
+  container3_2: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'red',
+    backgroundColor: 'blue',
+  },
+  container5: {
+    flex: .5,
+    flexDirection: 'row'
+  },
+  container5_1: {
+    flex: 1,
+    backgroundColor: 'yellow'
+  },
+  container5_2: {
+    flex: 2,
+    backgroundColor: 'black'
   },
 });
 
