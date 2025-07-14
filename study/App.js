@@ -1,21 +1,160 @@
-// React 및 React Native에서 제공하는 Core Component(View, Text 등)를 import 해줍니다.
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+// import React from 'react'
+// import {
+//     SafeAreaView,
+//     Image,
+//     StyleSheet
+// } from 'react-native'
 
-// 함수를 통해 사용자 지정 컴포넌트(예제에선 App)를 만들어줍니다.
-// return 값에 화면 구성 요소를 작성합니다.
+// import test from './Image/2025-07-06.png'
+// // import reactImg from './img/logo.png'
+
+// const App = () => {
+//     return (
+//         <SafeAreaView style={{flex: 1}}>
+//             <Image source={require('./Image/2025-07-06.png')} style={styles.img}/>
+//             <Image source={test} style={styles.img}/>    
+//         </SafeAreaView>
+//     )
+// }
+
+// const styles = StyleSheet.create({
+//     img: {
+//         height: 300,
+//         width: 300,
+//         resizeMode: 'contain',
+//     }
+// })
+
+// export default App
+
+
+// import React from 'react'
+// import {
+//     SafeAreaView,
+//     TouchableOpacity,
+//     Text,
+//     StyleSheet
+// } from 'react-native'
+
+// const App = () => {
+//     return (
+//         <SafeAreaView style={styles.container}>
+//             <TouchableOpacity
+//                 style={styles.touchContainer}
+//                 onPress={() => console.log("눌렀습니다")}
+//             >
+//                 <Text style={styles.text}>누르세요</Text>
+//             </TouchableOpacity>
+//         </SafeAreaView>
+//     )
+// }
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         justifyContent: 'center',
+//         alignItems: 'center'
+//     },
+//     touchContainer: {
+//         backgroundColor: 'blue',
+//         paddingHorizontal: 50,
+//         paddingVertical: 20
+//     },
+//     text: {
+//         color: 'white',
+//         fontSize: 20
+//     }
+// })
+
+// export default App
+
+import React from 'react'
+import {
+    SafeAreaView,
+    TouchableOpacity,
+    Text,
+    StyleSheet,
+    Alert
+} from 'react-native'
+
+const createAlert = () => {
+    Alert.alert(
+        "Alert 제목",
+        "Alert 내용"
+    )
+}
+
+const createTwoButtonAlert = () => {
+    Alert.alert(
+        "Alert 제목",
+        "Alert 내용",
+        [
+            {
+                text: "취소",
+                onPress: () => console.log("취소 버튼을 눌렀습니다."),
+                style: "cancel"
+            },
+            {
+                text: "확인",
+                onPress: () => console.log("확인 버튼을 눌렀습니다.")
+            }
+        ]
+    )
+}
+
+const createThreeButtonAlert = () => {
+    Alert.alert(
+        "Alert 제목",
+        "Alert 내용",
+        [
+            {text: "나중에 알림", onPress: () => console.log("나중에 알림 버튼을 눌렀습니다.")},
+            {text: "취소", onPress: () => console.log("취소 버튼을 눌렀습니다.")},
+            {text: "확인", onPress: () => console.log("확인 버튼을 눌렀습니다.")},
+        ]
+    )
+}
+
 const App = () => {
-  return <View style={styles.container}></View>;
-};
+    return (
+        <SafeAreaView style={styles.container}>
+            <TouchableOpacity
+                style={styles.touchContainer}
+                onPress={createAlert}
+            >
+                <Text style={styles.text}>누르세요</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={[styles.touchContainer, {backgroundColor: 'red'}]}
+                onPress={createTwoButtonAlert}
+            >
+                <Text style={styles.text}>누르세요</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={[styles.touchContainer, {backgroundColor: 'green'}]}
+                onPress={createThreeButtonAlert}
+            >
+                <Text style={styles.text}>누르세요</Text>
+            </TouchableOpacity>
+        </SafeAreaView>
+    )
+}
 
-// StyleSheet를 사용하여 HTML의 CSS와 유사한 역할을 합니다.
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'red',
-  },
-});
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    touchContainer: {
+        backgroundColor: 'blue',
+        paddingHorizontal: 50,
+        paddingVertical: 20,
+        margin: 20
+    },
+    text: {
+        color: 'white',
+        fontSize: 20
+    }
+})
 
-// 다음과 같이 앱 전체에서 사용하기 위해 JavaScript의 내보내기 기본값으로
-// 사용자 지정 컴포넌트를 내보낼 수 있습니다.
-export default App;
+export default App
