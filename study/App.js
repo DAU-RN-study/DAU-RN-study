@@ -27,7 +27,7 @@ const images = {
 const App = () => {
     return (           
             <SafeAreaView style={styles.container}>
-                <ImageBackground source={images.background} resizeMode="cover" style={{ flex: 1 }}>
+                <ImageBackground source={images.background} resizeMode="cover" style={styles.container}>
                     <View style={styles.overlay}>
                     </View>
                 </ImageBackground>
