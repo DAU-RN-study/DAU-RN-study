@@ -1,159 +1,122 @@
-// import React from 'react'
-// import {
-//     SafeAreaView,
-//     Image,
-//     StyleSheet
-// } from 'react-native'
-
-// import test from './Image/2025-07-06.png'
-// // import reactImg from './img/logo.png'
-
-// const App = () => {
-//     return (
-//         <SafeAreaView style={{flex: 1}}>
-//             <Image source={require('./Image/2025-07-06.png')} style={styles.img}/>
-//             <Image source={test} style={styles.img}/>    
-//         </SafeAreaView>
-//     )
-// }
-
-// const styles = StyleSheet.create({
-//     img: {
-//         height: 300,
-//         width: 300,
-//         resizeMode: 'contain',
-//     }
-// })
-
-// export default App
-
-
-// import React from 'react'
-// import {
-//     SafeAreaView,
-//     TouchableOpacity,
-//     Text,
-//     StyleSheet
-// } from 'react-native'
-
-// const App = () => {
-//     return (
-//         <SafeAreaView style={styles.container}>
-//             <TouchableOpacity
-//                 style={styles.touchContainer}
-//                 onPress={() => console.log("눌렀습니다")}
-//             >
-//                 <Text style={styles.text}>누르세요</Text>
-//             </TouchableOpacity>
-//         </SafeAreaView>
-//     )
-// }
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center'
-//     },
-//     touchContainer: {
-//         backgroundColor: 'blue',
-//         paddingHorizontal: 50,
-//         paddingVertical: 20
-//     },
-//     text: {
-//         color: 'white',
-//         fontSize: 20
-//     }
-// })
-
-// export default App
-
-import React from 'react'
+import React from "react";
 import {
-    SafeAreaView,
-    TouchableOpacity,
+    View,
     Text,
     StyleSheet,
-    Alert
 } from 'react-native'
 
-const createAlert = () => {
-    Alert.alert(
-        "Alert 제목",
-        "Alert 내용"
-    )
-}
-
-const createTwoButtonAlert = () => {
-    Alert.alert(
-        "Alert 제목",
-        "Alert 내용",
-        [
-            {
-                text: "취소",
-                onPress: () => console.log("취소 버튼을 눌렀습니다."),
-                style: "cancel"
-            },
-            {
-                text: "확인",
-                onPress: () => console.log("확인 버튼을 눌렀습니다.")
-            }
-        ]
-    )
-}
-
-const createThreeButtonAlert = () => {
-    Alert.alert(
-        "Alert 제목",
-        "Alert 내용",
-        [
-            {text: "나중에 알림", onPress: () => console.log("나중에 알림 버튼을 눌렀습니다.")},
-            {text: "취소", onPress: () => console.log("취소 버튼을 눌렀습니다.")},
-            {text: "확인", onPress: () => console.log("확인 버튼을 눌렀습니다.")},
-        ]
-    )
-}
 
 const App = () => {
     return (
-        <SafeAreaView style={styles.container}>
-            <TouchableOpacity
-                style={styles.touchContainer}
-                onPress={createAlert}
-            >
-                <Text style={styles.text}>누르세요</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={[styles.touchContainer, {backgroundColor: 'red'}]}
-                onPress={createTwoButtonAlert}
-            >
-                <Text style={styles.text}>누르세요</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={[styles.touchContainer, {backgroundColor: 'green'}]}
-                onPress={createThreeButtonAlert}
-            >
-                <Text style={styles.text}>누르세요</Text>
-            </TouchableOpacity>
-        </SafeAreaView>
+        <View style={styles.container}>
+            <View style={styles.top}>
+                <View style={styles.top1}></View>
+                <View style={styles.top2}></View>
+                <View style={styles.top3}></View>
+            </View>
+
+            <View style={styles.mid}>
+                <View style={styles.midLeft}>
+                    <View style={styles.container1}>
+                        <View style={styles.container1_blue}></View>
+                        <View style={styles.container1_black}></View>
+                    </View>
+                    <View style={styles.container2}></View>
+                </View>
+                <View style={styles.midRight}></View>
+            </View>
+
+            <View style={styles.bottom}>
+                <View style={styles.bottom1}></View>
+                <View style={styles.bottom2}>
+                    <View style={styles.bottom2L}></View>
+                    <View style={styles.bottom2R}></View>
+                </View>
+            </View>
+        </View>
     )
 }
 
+
 const styles = StyleSheet.create({
     container: {
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: 'white',
+        flex: 1
+    },
+
+    top: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        display: 'flex',
+        flexDirection: 'row'
     },
-    touchContainer: {
-        backgroundColor: 'blue',
-        paddingHorizontal: 50,
-        paddingVertical: 20,
-        margin: 20
+    top1: {
+        flex: 2,
+        backgroundColor: 'white'
     },
-    text: {
-        color: 'white',
-        fontSize: 20
+    top2: {
+        flex: 1,
+        backgroundColor: 'black'
+    },
+    top3: {
+        flex: 1.5,
+        backgroundColor: 'yellow'
+    },
+
+    mid: {
+        flex: 3,
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    midLeft: {
+        flex: 3,
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    container1: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    container1_blue: {
+        flex: 2,
+        backgroundColor: 'blue'
+    },
+    container1_black: {
+        flex: 1,
+        backgroundColor: 'black'
+    },
+    container2: {
+        flex: 3,
+        backgroundColor: 'white'
+    },
+    midRight: {
+        flex: 1.5,
+        backgroundColor: 'blue'
+    },
+
+    bottom: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    bottom1: {
+        flex: 1,
+        backgroundColor: 'red'
+    },
+    bottom2: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    bottom2L: {
+        flex: 1,
+        backgroundColor: 'yellow'
+    },
+    bottom2R: {
+        flex: 2.5,
+        backgroundColor: 'black'
     }
 })
 
