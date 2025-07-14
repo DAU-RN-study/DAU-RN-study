@@ -1,71 +1,31 @@
-import React from 'react'
+import React from 'react';
 import {
-    SafeAreaView,
-    TouchableOpacity,
-    Text,
-    StyleSheet,
-    Alert
-} from 'react-native'
+  ImageBackground,
+  StyleSheet,
+  View,
+  SafeAreaView
+} from 'react-native';
 
-const createAlert = () => {
-    Alert.alert(
-        "Alert 제목",
-        "Alert 내용"
-    )
-}
 
-const createTwoButtonAlert = () => {
-    Alert.alert(
-        "Alert 제목",
-        "Alert 내용",
-        [
-            {
-                text: "취소",
-                onPress: () => console.log("취소 버튼을 눌렀습니다."),
-                style: "cancel"
-            },
-            {
-                text: "확인",
-                onPress: () => console.log("확인 버튼을 눌렀습니다.")
-            }
-        ]
-    )
-}
-
-const createThreeButtonAlert = () => {
-    Alert.alert(
-        "Alert 제목",
-        "Alert 내용",
-        [
-            {text: "나중에 알림", onPress: () => console.log("나중에 알림 버튼을 눌렀습니다.")},
-            {text: "취소", onPress: () => console.log("취소 버튼을 눌렀습니다.")},
-            {text: "확인", onPress: () => console.log("확인 버튼을 눌렀습니다.")},
-        ]
-    )
-}
+const images = {
+  background: require('./Image/backgroundpic.jpg'),
+  profile: require('./Image/profilepic.jpg'),
+  arrow: require('./Image/arrowleft.png'),
+  cross: require('./Image/cross.png'),
+  gift: require('./Image/gift.png'),
+  pencil: require('./Image/pencil.png'),
+  qr: require('./Image/qr.png'),
+  quote: require('./Image/quote.png'),
+  settings: require('./Image/settings.png'),
+};
 
 const App = () => {
-    return (
-        <SafeAreaView style={styles.container}>
-            <TouchableOpacity
-                style={styles.touchContainer}
-                onPress={createAlert}
-            >
-                <Text style={styles.text}>누르세요</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={[styles.touchContainer, {backgroundColor: 'red'}]}
-                onPress={createTwoButtonAlert}
-            >
-                <Text style={styles.text}>누르세요</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={[styles.touchContainer, {backgroundColor: 'green'}]}
-                onPress={createThreeButtonAlert}
-            >
-                <Text style={styles.text}>누르세요</Text>
-            </TouchableOpacity>
-        </SafeAreaView>
+    return (           
+            <SafeAreaView style={styles.container}>
+                <ImageBackground source={images.background} resizeMode="cover">
+                    <View style={styles.overlay}/>
+                </ImageBackground>
+            </SafeAreaView>
     )
 }
 
@@ -74,6 +34,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    overlay: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.4)', // 검정색 + 40% 투명
     },
     touchContainer: {
         backgroundColor: 'blue',
@@ -86,5 +54,6 @@ const styles = StyleSheet.create({
         fontSize: 20
     }
 })
+
 
 export default App
