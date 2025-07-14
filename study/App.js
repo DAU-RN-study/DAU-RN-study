@@ -3,8 +3,13 @@ import {
   ImageBackground,
   StyleSheet,
   View,
-  SafeAreaView
+  SafeAreaView,
+  Text
+
 } from 'react-native';
+/*import {
+  SafeAreaView,
+} from 'react-native-safe-area-context';*/
 
 
 const images = {
@@ -22,8 +27,9 @@ const images = {
 const App = () => {
     return (           
             <SafeAreaView style={styles.container}>
-                <ImageBackground source={images.background} resizeMode="cover">
-                    <View style={styles.overlay}/>
+                <ImageBackground source={images.background} resizeMode="cover" style={{ flex: 1 }}>
+                    <View style={styles.overlay}>
+                    </View>
                 </ImageBackground>
             </SafeAreaView>
     )
@@ -32,28 +38,18 @@ const App = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
     },
     overlay: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.4)', // 검정색 + 40% 투명
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        flex:1,
     },
     touchContainer: {
         backgroundColor: 'blue',
-        paddingHorizontal: 50,
-        paddingVertical: 20,
-        margin: 20
     },
     text: {
         color: 'white',
         fontSize: 20
     }
 })
-
 
 export default App
