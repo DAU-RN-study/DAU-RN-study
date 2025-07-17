@@ -1,42 +1,69 @@
-// React 및 React Native에서 제공하는 Core Component(View, Text 등)를 import 해줍니다.
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {React, useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  ActivityIndicator,
+  SafeAreaView,
+} from 'react-native';
 
-// 함수를 통해 사용자 지정 컴포넌트(예제에선 App)를 만들어줍니다.
-// return 값에 화면 구성 요소를 작성합니다.
-const App = () => {
+import {DATA} from './data/DATA';
+
+const TestText = ({children, color}) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.highContainer}>
-        <View style={styles.highWhite}></View>
-        <View style={styles.highBlack}></View>
-        <View style={styles.highYellow}></View>
-      </View>
-    </View>
+    <TouchableOpacity
+      style={[styles.testContainer, {backgroundColor: `${color}`}]}>
+      <Text style={styles.testText}>{children}</Text>
+    </TouchableOpacity>
   );
 };
 
-// StyleSheet를 사용하여 HTML의 CSS와 유사한 역할을 합니다.
+const App = () => {
+  // const [loading, setLoading] = useState(true);
+  // if (loading) {
+  //   return (
+  //     <View style={styles.loadingContainer}>
+  //       <ActivityIndicator size="large" color="#0095F1" />
+  //       <Text style={styles.loadingText}>데이터를 불러오는 중...</Text>
+  //     </View>
+  //   );
+  // }
+
+  return (
+    <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+      <Text
+        style={{fontSize: 30, margin: 20, color: 'blue', fontWeight: '900'}}>
+        사용자 정의 컴포넌트를 만들어봅시다!
+        {DATA.univ}
+      </Text>
+      <TestText color={'red'}>{DATA.univ}</TestText>
+      <TestText color={'yellow'}>{DATA.members[0].name}</TestText>
+      <TestText color={'green'}>다른 prop들도 지정해서</TestText>
+      <TestText color={'lavender'}>보내줄 수 있답니다!!</TestText>
+      <TestText color={'yellowgreen'}>여기선 color 값을 보내줬어요~~</TestText>
+      <TestText color={'white'}>참 신기하죠~? 이걸 이용하면</TestText>
+      <TestText color={'powderblue'}>
+        효율적으로 코드를 짤 수 있답니다~~~
+      </TestText>
+    </ScrollView>
+  );
+};
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'red',
-    flexDirection: 'column',
+  testContainer: {
+    borderRadius: 10,
+    justifyContent: 'center',
+    margin: 20,
   },
-  highContainer: {
-    flex: 1,
-    flexDirection: 'row',
+  testText: {
+    fontSize: 25,
+    marginVertical: 10,
+    marginHorizontal: 20,
+    color: 'black',
   },
-  highWhite: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-  highBlack: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
+  loadingContainer: {},
 });
 
-// 다음과 같이 앱 전체에서 사용하기 위해 JavaScript의 내보내기 기본값으로
-// 사용자 지정 컴포넌트를 내보낼 수 있습니다.
 export default App;
