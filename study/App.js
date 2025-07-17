@@ -1,98 +1,142 @@
-// React 및 React Native에서 제공하는 Core Component(View, Text 등)를 import 해줍니다.
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React from 'react'
+import{
+    View,
+    SafeAreaView,
+    TouchableOpacity,
+    Text,
+    StyleSheet,
+    Alert,
+    ImageBackground,
+    Image
+} from 'react-native'
 
-// 함수를 통해 사용자 지정 컴포넌트(예제에선 App)를 만들어줍니다.
-// return 값에 화면 구성 요소를 작성합니다.
+import bgimg from './image/bgimg.png'
+import x_icon from './image/xIcon.png'
+import gift_icon from './image/gift.png'
+import qr_icon from './image/qr.png'
+import geer_icon from './image/geer.png'
+import speechBubble from './image/speechBubble.png'
+import pencil from './image/pencil.png'
+import quotes from './image/quotes.png'
+import profile from './image/profile.png'
+
+const alertBottun=() =>{
+    Alert.alert(
+        "프로필 편집",
+        "프로필 편집 버튼입니다.",
+        [
+            {text: "취소", onPress: () => console.log("취소"), style: "cancel"},
+            {text: "확인", onPress: () => console.log("확인")}
+        ]
+    )
+}
+
 const App = () => {
-  return( <View style={styles.container}>
-    <View style={styles.container1}>
-      <View style={styles.container1_1}></View>
-      <View style={styles.container1_2}></View>
-      <View style={styles.container1_3}></View>
-    </View>
-    <View style={styles.container2}>
-      <View style={styles.container2_1}></View>
-      <View style={styles.container2_2}></View>
-      <View style={styles.container2_3}></View>
-    </View>
-    <View style={styles.container3}>
-      <View style={styles.container3_1}></View>
-      <View style={styles.container3_2}></View>
-    </View>
-    <View style={{flex: .5, backgroundColor: 'red'}}></View>
-    <View style={styles.container5}>
-      <View style={styles.container5_1}></View>
-      <View style={styles.container5_2}></View>
-    </View>
-  </View>
-)};
+    return (
+        <SafeAreaView style={styles.container}>
+            <ImageBackground source={bgimg} 
+            style={styles.backgrondImage}
+            resizeMode = 'cover'>
+                    <View style={styles.body}>
+                        <View style={styles.header}>
+                            <View><Image source={x_icon} style={styles.icon}></Image></View>
+                            <View style={styles.iconRight}>
+                                <Image source={gift_icon} style={styles.icon}></Image>
+                                <Image source={qr_icon} style={styles.icon}></Image>
+                                <Image source={geer_icon} style={styles.icon}></Image>
+                            </View>
+                        </View>
+                        <View style={styles.contents}>
+                            <Image source={profile} style={styles.profile}></Image>
+                            <Text style={styles.name}>조현우</Text>
+                        </View>
+                        <View style={styles.footer}>
+                            <View style = {styles.aaa}>
+                                <Image source={speechBubble} style={styles.icon}></Image>
+                                <Text style={styles.text}>나와의 채팅</Text>
+                            </View>
+                            <View style = {styles.aaa}>
+                            <TouchableOpacity style={styles.touch} onPress={alertBottun}>
+                                <Image source={pencil} style={styles.icon}></Image>
+                                <Text style={styles.text}>프로필 편집</Text>
+                            </TouchableOpacity>
+                            </View>
+                            <View style = {styles.aaa}>
+                                <Image source={quotes} style={styles.icon}></Image>
+                                <Text style={styles.text}>카카오 스토리</Text>
+                            </View>
+                        </View>
 
-// StyleSheet를 사용하여 HTML의 CSS와 유사한 역할을 합니다.
+                    </View>
+            </ImageBackground>
+
+        </SafeAreaView>
+    )
+}
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column'
-  },
-  container1: {
-    flex: .8,
-    flexDirection: 'row'
-  },
-  container1_1:{
-    flex: 1,
-    backgroundColor: 'white'
-  },
-  container1_2:{
-    flex: 1,
-    backgroundColor: 'black'
-  },
-  container1_3:{
-    flex: 1,
-    backgroundColor: 'yellow'
-  },
-  container2: {
-    flex: .5,
-    flexDirection: 'row'
-  },
-  container2_1:{
-    flex: 1,
-    backgroundColor: 'blue'
-  },
-  container2_2:{
-    flex: 1,
-    backgroundColor: 'black'
-  },
-  container2_3:{
-    flex: 1,
-    backgroundColor: 'blue'
-  },
-  container3: {
-    flex: 1,
-    backgroundColor: 'red',
-    flexDirection: 'row'
-  },
-  container3_1: {
-    flex: 2,
-    backgroundColor: 'white',
-  },
-  container3_2: {
-    flex: 1,
-    backgroundColor: 'blue',
-  },
-  container5: {
-    flex: .5,
-    flexDirection: 'row'
-  },
-  container5_1: {
-    flex: 1,
-    backgroundColor: 'yellow'
-  },
-  container5_2: {
-    flex: 2,
-    backgroundColor: 'black'
-  },
-});
+    container: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    backgrondImage: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    body: {
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        flex: 1,
+        flexDirection: 'column'
+    },
+    header: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 10
+    },
+    iconRight: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
+    },
+    contents: {
+        flex: 12,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-end'
+    },
+    footer: {
+        flex: 2,
+        flexDirection: 'row',
+        borderTopColor: 'white',
+        borderTopWidth: .5,
+        justifyContent: 'space-around'
+    },
+    icon: {
+        width: 25,
+        height: 25,
+        margin: 10
+    },
+    profile: {
+        height: 100,
+        width: 100,
+        borderRadius: 20
+    },
+    name: {
+        color: 'white',
+        fontSize: 18,
+        margin: 10,
+        marginBottom: 60
+    },
+    aaa: {
+        flex: 1,
+        flexDirection: 'column', 
+        justifyContent: 'flex-around',
+        alignItems: 'center'
+    },
+    text: {
+        color: 'white'
+    }
+})
 
-// 다음과 같이 앱 전체에서 사용하기 위해 JavaScript의 내보내기 기본값으로
-// 사용자 지정 컴포넌트를 내보낼 수 있습니다.
-export default App;
+export default App
