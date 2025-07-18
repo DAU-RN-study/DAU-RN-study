@@ -5,7 +5,9 @@ import {
     StyleSheet,
     Dimensions,    // 현재 디바이스의 화면 크기를 가져오는 모듈 (반응형)
     View,
-    Text
+    Text,
+    TouchableOpacity,
+    Alert
 } from 'react-native'
 
 import reactImg from './image/backgroundimg.jpg'
@@ -20,6 +22,24 @@ import facetalkImg from './image/facetalk.png'
 
 // 현재 화면의 width와 height를 가져옴 (반응형 크기 적용용)
 const { width, height } = Dimensions.get('window');
+
+const handlePress = (buttonName) => {
+    Alert.alert(
+        "프로필 편집",
+        `${buttonName} 버튼입니다.`,
+        [
+            {
+                text: "취소",
+                onPress: () => console.log("취소 버튼을 눌렀습니다."),
+                style: "cancel"
+            },
+            {
+                text: "확인",
+                onPress: () => console.log("확인 버튼을 눌렀습니다.")
+            }
+        ]
+    )
+}
 
 const App = () => {
     return (
@@ -50,7 +70,9 @@ const App = () => {
                 {/* 프로필 */}
                 <View style={styles.profile}>
                     <View style={styles.profileImg}>
-                        <Image source={profileImg} style={styles.profileImg}/>
+                        <TouchableOpacity onPress={() => handlePress('프로필 편집')}> 
+                            <Image source={profileImg} style={styles.profileImg}/>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.profileName}>
                         <Text style={styles.nameText}>김채은</Text>
