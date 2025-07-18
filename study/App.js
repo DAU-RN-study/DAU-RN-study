@@ -1,21 +1,75 @@
-// React 및 React Native에서 제공하는 Core Component(View, Text 등)를 import 해줍니다.
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 
-// 함수를 통해 사용자 지정 컴포넌트(예제에선 App)를 만들어줍니다.
-// return 값에 화면 구성 요소를 작성합니다.
 const App = () => {
-  return <View style={styles.container}></View>;
+  return (
+    <View style={styles.container0}>
+      
+      {/* 상단: Powderblue 영역 */}
+      <View style={styles.c1}>
+        <Text>Powderblue</Text>
+      </View>
+      
+      {/* 하단: 좌우 1:1 가로 분할 */}
+      <View style={styles.c2}>
+        
+        {/* 왼쪽: 세로 1:2 분할 */}
+        <View style={styles.c3}>
+          <View style={styles.c5}>
+            <Text>Yellow</Text>
+          </View>
+          <View style={styles.c6}>
+            <Text>Lavender</Text>
+          </View>
+        </View>
+        
+        {/* 오른쪽: Pink 전체 */}
+        <View style={styles.c4}>
+          <Text>Pink</Text>
+        </View>
+      
+      </View>
+    </View>
+  );
 };
 
-// StyleSheet를 사용하여 HTML의 CSS와 유사한 역할을 합니다.
 const styles = StyleSheet.create({
-  container: {
+  container0: {
     flex: 1,
-    backgroundColor: 'red',
+    flexDirection: 'column'
   },
+  c1: {
+    flex: 1,
+    backgroundColor: 'powderblue',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  c2: {
+    flex: 3,
+    flexDirection: 'row'
+  },
+  c3: {
+    flex: 1,
+    flexDirection: 'column'
+  },
+  c4: {
+    flex: 1,
+    backgroundColor: 'pink',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  c5: {
+    flex: 1,
+    backgroundColor: 'yellow',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  c6: {
+    flex: 2,
+    backgroundColor: 'lavender',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
-// 다음과 같이 앱 전체에서 사용하기 위해 JavaScript의 내보내기 기본값으로
-// 사용자 지정 컴포넌트를 내보낼 수 있습니다.
 export default App;
