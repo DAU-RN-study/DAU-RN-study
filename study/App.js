@@ -1,45 +1,26 @@
-import {React, useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  ActivityIndicator,
-  SafeAreaView,
-} from 'react-native';
+import React from 'react';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 
-import {DATA} from './data/DATA';
+import DATA from './DATA/DATA.json';
+// import {DATA} from './DATA/DATA';
 
 const TestText = ({children, color}) => {
   return (
-    <TouchableOpacity
-      style={[styles.testContainer, {backgroundColor: `${color}`}]}>
+    <View style={[styles.testContainer, {backgroundColor: `${color}`}]}>
       <Text style={styles.testText}>{children}</Text>
-    </TouchableOpacity>
+    </View>
   );
 };
 
 const App = () => {
-  // const [loading, setLoading] = useState(true);
-  // if (loading) {
-  //   return (
-  //     <View style={styles.loadingContainer}>
-  //       <ActivityIndicator size="large" color="#0095F1" />
-  //       <Text style={styles.loadingText}>데이터를 불러오는 중...</Text>
-  //     </View>
-  //   );
-  // }
-
   return (
     <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
       <Text
         style={{fontSize: 30, margin: 20, color: 'blue', fontWeight: '900'}}>
-        사용자 정의 컴포넌트를 만들어봅시다!
-        {DATA.univ}
+        사용자 정의 컴포넌트를 만들어봅시다! {DATA.page[0].name}
       </Text>
-      <TestText color={'red'}>{DATA.univ}</TestText>
-      <TestText color={'yellow'}>{DATA.members[0].name}</TestText>
+      {/* <TestText color={'red'}>{DATA[1].title}</TestText> */}
+      <TestText color={'yellow'}>children 값입니다.</TestText>
       <TestText color={'green'}>다른 prop들도 지정해서</TestText>
       <TestText color={'lavender'}>보내줄 수 있답니다!!</TestText>
       <TestText color={'yellowgreen'}>여기선 color 값을 보내줬어요~~</TestText>
@@ -63,7 +44,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     color: 'black',
   },
-  loadingContainer: {},
 });
 
 export default App;
