@@ -1,215 +1,231 @@
 import React from 'react';
 import {
+    View,
+    Text,
+    Linking,
+    FlatList,
+    StyleSheet,
+    ScrollView,
     SafeAreaView,
     TouchableOpacity,
-    Text,
-    StyleSheet,
+    Image,
     Alert,
-    View,
-    Image
 } from 'react-native';
 
-// 아이콘 Image
-import closeIcon from './image/icon1.jpg';
-import giftIcon from './image/icon2.jpg';
-import qrcodeIcon from './image/icon3.jpg';
-import settingIcon from './image/icon4.jpg';
-import myChatIcon from './image/icon5.jpg';
-import editProfileIcon from './image/icon6.jpg';
-import kakaoStoryIcon from './image/icon7.jpg';
-import profileImage from './image/photo.jpg'
-import backgroundImage from './image/back.jpg';
+import DATA from './DATA/DATA.json';
+import arrow_left from './image/arrow_left.jpg';
+import search from './image/search.jpg';
+import add from './image/add.jpg';
+import music from './image/music.jpg';
+import settings from './image/settings.jpg';
+import Photo from './image/cats.jpg';
 
-
-const createalert = () => {
+// 구분선
+const Divider = () => {
+    return (<View style={styles.divider}/>);};
+// 광고배너 url
+const AdUrl = 'https://www.naver.com';
+//버튼 알림
+const createAlert = (icon) => {
     Alert.alert(
         "알림",
-        "버튼을 눌렀습니다.",
+        icon + " 버튼을 눌렀습니다.",
         [
             {
                 text : "취소",
                 onPress : () => console.log("취소 버튼을 눌렀습니다."),
-                style: "cancel"
+                style : "cencle",
             },
             {
-                text: "확인",
-                onPress : () => console.log("확인 버튼을 눌렀습니다."),
+                text : "확인",
+                onPress : () => console.log("확인 버튼을 눌렀습니다.")
             }
         ]
+    )
+};
+// 채팅 알림
+const chatAlert = (title) => {
+    Alert.alert(
+        "알림",
+        title + "님과의 채팅입니다.",
+        [
+            {
+                text : "취소",
+                onPress : () => console.log("취소 버튼을 눌렀습니다."),
+                style : "cancel"
+            },
+            {
+                text : "확인",
+                onPress : () => console.log("확인 버튼을 눌렀습니다.")
+            }
+        ]
+    )
+}
+//채팅 박스
+const ChatItem = ({item}) => {
+    return (
+        <TouchableOpacity style={styles.chatBox} onPress={() => chatAlert(item.title)}>
+            <Image source={Photo} style={styles.chatImage}/>
+            <View style={styles.chatBoxInfo}>
+                    <Text style={styles.titleText}>{item.title}</Text>    
+                    <Text style={styles.descriptionText}>{item.description}</Text> 
+            </View>
+            <View style={styles.chatBoxDate}>
+                <Text style={styles.dateText}>{item.date}</Text>
+            </View>
+        </TouchableOpacity>
+)}
+//아이콘
+const Icon = ({imagesource, imagestyle, pressalert}) => {
+    return(
+        <TouchableOpacity onPress={pressalert}>
+            <Image source={imagesource} style={imagestyle}/>
+        </TouchableOpacity>
+
     )
 };
 
 const App = () => {
     return (
-        <SafeAreaView style={styles.mainContainer}>
-            {/* 프로필 배경 화면 */}
-            <View style={styles.backgroundLayer}>
-                <Image source={backgroundImage} style={styles.backgroundStyle}/>
-                <View style = {styles.filter} />
-            </View>
-
-            <View style={styles.mainContainer}>
-                {/* 상단 */}
-                <View style={styles.headercontainer}>
-                    {/* 취소 버튼 */}
-                    <View style={styles.headerLeftContainer}>
-                        <TouchableOpacity onPress={createalert}>
-                            <Image source = {closeIcon} style={styles.headerIconStyle}/>
-                        </TouchableOpacity>
+        <SafeAreaView style={styles.mainContainer}> 
+            {/* 상단 바 */}
+            <View style={styles.chatListHeader}>
+                <View style={styles.navigationBar}>
+                    <Icon imagesource={arrow_left} imagestyle={styles.navigationIcon} pressalert={() => createAlert("뒤로가기")}/>
+                    <Text style={styles.navigationText}>KaKaoChat</Text>
+                </View>
+                <Divider/>
+                <View style={styles.toolBar}>
+                    <View style={styles.toolBarLeft}>
+                        <Text style={styles.toolBarText}>채팅</Text>
                     </View>
-                    {/* 선물, 큐알, 설정 버튼 */}
-                    <View style={styles.headerRightContainer}>
-                        <TouchableOpacity onPress={createalert}>
-                            <Image source={giftIcon} style={styles.headerIconStyle}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={createalert}>
-                            <Image source={qrcodeIcon} style={styles.headerIconStyle}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={createalert}>
-                            <Image source={settingIcon} style={styles.headerIconStyle}/>
-                        </TouchableOpacity>
+                    <View style={styles.toolBarRight}>
+                        <Icon imagesource={search} imagestyle={styles.toolBarIcon} pressalert={() => createAlert("찾기")}/>
+                        <Icon imagesource={add} imagestyle={styles.toolBarIcon} pressalert={() => createAlert("오픈채팅")}/>
+                        <Icon imagesource={music} imagestyle={styles.toolBarIcon} pressalert={() => createAlert("음악")}/>
+                        <Icon imagesource={settings} imagestyle={styles.toolBarIcon} pressalert={() => createAlert("설정")}/>
                     </View>
                 </View>
 
-                {/* 중앙 */}
-                <View style={styles.profileContainer}>
-                    {/* 프로필 사진 */}
-                    <TouchableOpacity onPress={createalert}>
-                        <Image source={profileImage} style={styles.profileImageStyle}/>
-                    </TouchableOpacity>
-                    {/* 프로필 이름 */}
-                    <Text style={styles.profileNameText}>조예영</Text>
-                    {/* 구분자 */}
-                    <View style={{backgroundColor : 'gray', height : 1, width : '100%', marginTop : 25}}/>
-                </View>
-
-                {/* 하단 */}
-                <View style={styles.bottomcontainer}>
-                    {/* 나와의 채팅 */}
-                    <TouchableOpacity onPress={createalert} style={styles.bottomMenuItem}>
-                        <Image source={myChatIcon} style={styles.bottomIconStyle}/>
-                        <Text style={styles.bottomItemText}>나와의 채팅</Text>
-                    </TouchableOpacity>
-                    {/* 프로필 편집 */}
-                    <TouchableOpacity onPress={createalert} style={styles.bottomMenuItem}>
-                        <Image source={editProfileIcon} style={styles.bottomIconStyle}/>
-                        <Text style={styles.bottomItemText}>프로필 편집</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={createalert} style={styles.bottomMenuItem}>
-                        <Image source={kakaoStoryIcon} style={styles.bottomIconStyle}/>                    
-                        <Text style={styles.bottomItemText}>카카오스토리</Text>
-                    </TouchableOpacity>
-                </View>
             </View>
+
+            {/* 메인 */}
+            <ScrollView>
+            <TouchableOpacity style={styles.adBar} onPress={()=> Linking.openURL(AdUrl)}>
+                <Text style={styles.adText}>광고 배너</Text>
+            </TouchableOpacity>
+            <FlatList 
+                style={styles.chatListMain} 
+                data={DATA}
+                renderItem={({item})=> <ChatItem item={item}/>} 
+                KeyExtractor={item=> item.id}/>
+            </ScrollView>
         </SafeAreaView>
-
 )};
 
 const styles = StyleSheet.create({
-    mainContainer : {
+    divider : {
+        height : 1,
+        width : '100%',
+        backgroundColor : 'gray',
+
+    },
+    chatBox : {
         flex : 1,
-    },
-
-    backgroundLayer : {
-        position : 'absolute',
-        alignItems : 'center',
-        height : '100%',
-        width : '100%',
-    },
-
-    backgroundStyle : {
-        resizeMode : 'cover',
-        position : 'absolute',
-        height : '100%',
-        width : '100%',
-    },
-
-    filter : {
-        height : '100%',
-        width : '100%',
-        backgroundColor : 'rgba(128,128,128,0.2)',
-        position : 'absolute',
-    },
-
-    headercontainer : {
-        flex : 1,
-        // backgroundColor : 'yellow',
         flexDirection : 'row',
-        alignItems : 'center',
-        marginHorizontal : 10,
-    },
-
-    headerLeftContainer : {
-        flex : 1,
-        // backgroundColor : 'pink',
-        flexDirection : 'row',
+        margin : 10,
         justifyContent : 'flex-start',
     },
-
-    headerRightContainer : {
+    chatImage : {
+        height : 45,
+        width : 45,
+        borderRadius : 10,
+        marginRight : 5,
+    },
+    chatBoxInfo : {
+        flex : 7,
+        flexDirection : 'column',
+        justifyContent : 'space-evenly',
+        // backgroundColor : 'white',
+    },
+    titleText : {
+        fontSize : 15,
+    },
+    descriptionText : {
+        fontSize : 10,
+    },
+    chatBoxDate : {
         flex : 1,
-        // backgroundColor : 'orange',
+        alignItems : 'flex-end',
+        // backgroundColor : 'yellow',
+    },
+    dateText : {
+        fontSize : 10,
+    },
+    mainContainer : {
+        flex : 1,
+        // backgroundColor : 'pink',
+    },
+    chatListHeader : {
+        flexDirection : 'column',
+        // backgroundColor : 'yellow',
+    },
+    navigationBar : {
+        height : 50,
+        flexDirection : 'row',
+        justifyContent : 'flex-start',
+        alignItems : 'center',
+        // backgroundColor : 'green',
+    },
+    navigationIcon : {
+        height : 40,
+        width : 40,
+    },
+    navigationText : {
+        marginLeft : 30,
+        fontSize : 20,
+        color : 'black',
+    },
+    toolBar : {
+        height : 40,
+        flexDirection : 'row',
+        justifyContent : 'flex-end',
+        alignItems : 'center',
+        marginHorizontal : 10,
+        // backgroundColor : 'blue',
+    },
+    toolBarLeft : {
+        flex : 1,
+    },
+    toolBarRight : {
+        flex : 1,
         flexDirection : 'row',
         justifyContent : 'flex-end',
     },
-
-    headerIconStyle : {
+    toolBarText : {
+        fontSize : 20,
+        color : 'black',
+    },
+    toolBarIcon : {
         height : 20,
         width : 20,
-        tintColor : 'white',
-        resizeMode : 'contain',
-        marginHorizontal : 10,
+        marginHorizontal : 5,
     },
-
-    profileContainer : {
-        flex : 12,
-        // backgroundColor : 'green',
-        flexDirect : 'column',
-        alignItems : 'center',
-        justifyContent : 'flex-end'
-    },
-
-    profileImageStyle : {
-        height : 100,
-        width : 100,
-        resizeMode : 'cover', // 채우기
-        borderRadius : 30, // 모서리
-    },
-
-    profileNameText : {
-        fontSize : 18, 
-        color : 'white',
-        marginVertical : 15,
-    },
-
-    bottomcontainer : {
-        flex : 2.5,
-        // backgroundColor : 'blue',
-        flexDirection : 'row',
-        justifyContent : 'space-between',
-    },
-
-    bottomMenuItem : {
-        flex : 1,
-        // backgroundColor : 'powderblue',
-        flexDirextion : 'cloumn',
-        alignItems : 'center',
+    adBar : {
+        height : 60,
         justifyContent : 'center',
+        alignItems : 'center',
+        margin : 10,
+        borderRadius : 10,
+        backgroundColor : 'lightgray',
     },
-
-    bottomIconStyle : {
-        height : 25,
-        width : 25,
-        tintColor : 'white',
-        resizeMode : 'contain',
+    adText : {
+        fontSize : 25,
     },
-        
-    bottomItemText : {
-        fontSize : 15,
-        color : 'white',
-        marginVertical : 10,
+    chatListMain : {
+        flex : 1,
+        // backgroundColor : 'red',
     },
-
 });
 
 export default App;
