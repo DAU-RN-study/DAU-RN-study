@@ -12,20 +12,26 @@ const App = () => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.first}>
-				<Text>powderblue</Text>
+				<View style={styles.yblue}>
+					<View style={styles.yel}></View>
+					<View style={styles.blu}></View>
+				</View>
+				<View style={styles.wbb}>
+					<View style={styles.whi}></View>
+					<View style={styles.bb}>
+						<View style={styles.wb}>
+							<View style={styles.white}></View>
+							<View style={styles.blue}></View>
+						</View>
+						<View style={styles.bla}></View>
+					</View>
+				</View>
 			</View>
 			<View style={styles.second}>
-				<View style={styles.pink}>
-					<Text>pink</Text>
-				</View>
-				<View style={styles.else}>
-					<View style={styles.lavender}>
-						<Text>lavender</Text>
-					</View>
-					<View style={styles.yellow}>
-						<Text>yellow</Text>
-					</View>
-
+				<View style={styles.red}></View>
+				<View style={styles.yb}>
+					<View style={styles.yellow}></View>
+					<View style={styles.black}></View>
 				</View>
 			</View>
 		</View>
@@ -39,39 +45,74 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 	},
 	first:{
-		backgroundColor: "powderblue",
+		backgroundColor: "white",
+		flex: 6,
+		flexDirection: 'row-reverse',
+	},
+	yblue:{
+		backgroundColor: "blue",
 		flex: 1,
 		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
 	},
-	second:{
-		backgroundColor: "pink",
-		flex: 3,
-		flexDirection : "row-reverse"
-	},
-	pink:{
-		backgroundColor: "pink",
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	else:{
+	yel:{
 		backgroundColor: "yellow",
 		flex: 1,
-		flexDirection : "column-reverse"
 	},
-	lavender:{
-		backgroundColor: "lavender",
+	blu:{
+		backgroundColor: "blue",
 		flex: 2,
-		justifyContent: 'center',
-		alignItems: 'center',
+	},
+	wbb:{
+		backgroundColor: "white",
+		flex: 2,
+		flexDirection: 'column-reverse',
+	},
+	whi:{
+		backgroundColor: "white",
+		flex: 1,
+	},
+	bb:{
+		backgroundColor: "black",
+		flex: 1,
+		flexDirection: 'row',
+	},
+	wb:{
+		backgroundColor: "white",
+		flex: 1,
+		flexDirection: 'column',
+	},
+	white:{
+		backgroundColor: "white",
+		flex: 2,
+	},
+	blue:{
+		backgroundColor: "blue",
+		flex: 1,
+	},
+	bla:{
+		backgroundColor: "black",
+		flex: 0.9,
+	},
+	second:{
+		backgroundColor: "red",
+		flex: 2,
+	},
+	red:{
+		backgroundColor: "red",
+		flex: 1,
+	},
+	yb:{
+		backgroundColor: "yellow",
+		flex: 1,
+		flexDirection : "row"
 	},
 	yellow:{
 		backgroundColor: "yellow",
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
+	},
+	black:{
+		backgroundColor: "black",
+		flex: 2,
 	},
 })
 
