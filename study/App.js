@@ -1,263 +1,86 @@
-// import React from 'react'
-// import {
-//     SafeAreaView,
-//     Image,
-//     StyleSheet
-// } from 'react-native'
+// App.js
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 
-// // import reactImg from './img/logo.png'
-// import test from './image/test.jpg'
-
-// const App = () => {
-//     return (
-//         <SafeAreaView style={{flex: 1}}>
-//             <Image source={require('./image/test.jpg')} style={styles.img}/>
-//             {/* <Image source={reactImg} style={styles.img}/> */}
-//             <Image source={test} style={styles.img}></Image>
-//         </SafeAreaView>
-//     )
-// }
-
-// const styles = StyleSheet.create({
-//     img: {
-//         height: 200,
-//         width: 200,
-//         resizeMode: 'contain',
-//     }
-// })
-
-// export default App
-
-// import React from 'react'
-// import {
-//     SafeAreaView,
-//     TouchableOpacity,
-//     Text,
-//     StyleSheet,
-//     Alert
-// } from 'react-native'
-
-// const createAlert = () => {
-//     Alert.alert(
-//         "Alert 제목",
-//         "Alert 내용"
-//     )
-// }
-
-// const createTwoButtonAlert = () => {
-//     Alert.alert(
-//         "Alert 제목",
-//         "Alert 내용",
-//         [
-//             {
-//                 text: "취소",
-//                 onPress: () => console.log("취소 버튼을 눌렀습니다."),
-//                 style: "cancel"
-//             },
-//             {
-//                 text: "확인",
-//                 onPress: () => console.log("확인 버튼을 눌렀습니다.")
-//             }
-//         ]
-//     )
-// }
-
-// const createThreeButtonAlert = () => {
-//     Alert.alert(
-//         "Alert 제목",
-//         "Alert 내용",
-//         [
-//             {text: "나중에 알림", onPress: () => console.log("나중에 알림 버튼을 눌렀습니다.")},
-//             {text: "취소", onPress: () => console.log("취소 버튼을 눌렀습니다.")},
-//             {text: "확인", onPress: () => console.log("확인 버튼을 눌렀습니다.")},
-//         ]
-//     )
-// }
-
-// const App = () => {
-//     return (
-//         <SafeAreaView style={styles.container}>
-//             <TouchableOpacity
-//                 style={styles.touchContainer}
-//                 onPress={createAlert}
-//             >
-//                 <Text style={styles.text}>누르세요</Text>
-//             </TouchableOpacity>
-//             <TouchableOpacity
-//                 style={[styles.touchContainer, {backgroundColor: 'red'}]}
-//                 onPress={createTwoButtonAlert}
-//             >
-//                 <Text style={styles.text}>누르세요</Text>
-//             </TouchableOpacity>
-//             <TouchableOpacity
-//                 style={[styles.touchContainer, {backgroundColor: 'green'}]}
-//                 onPress={createThreeButtonAlert}
-//             >
-//                 <Text style={styles.text}>누르세요</Text>
-//             </TouchableOpacity>
-//         </SafeAreaView>
-//     )
-// }
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center'
-//     },
-//     touchContainer: {
-//         backgroundColor: 'blue',
-//         paddingHorizontal: 50,
-//         paddingVertical: 20,
-//         margin: 20
-//     },
-//     text: {
-//         color: 'white',
-//         fontSize: 20
-//     }
-// })
-
-// export default App
-
-import React from 'react'
-import{
-    View,
-    SafeAreaView,
-    TouchableOpacity,
-    Text,
-    StyleSheet,
-    Alert,
-    ImageBackground,
-    Image
-} from 'react-native'
-
-import bgimg from './image/bgimg.png'
-import x_icon from './image/xIcon.png'
-import gift_icon from './image/gift.png'
-import qr_icon from './image/qr.png'
-import geer_icon from './image/geer.png'
-import speechBubble from './image/speechBubble.png'
-import pencil from './image/pencil.png'
-import quotes from './image/quotes.png'
-import profile from './image/profile.png'
-
-const alertBottun=() =>{
-    Alert.alert(
-        "프로필 편집",
-        "프로필 편집 버튼입니다.",
-        [
-            {text: "취소", onPress: () => console.log("취소"), style: "cancel"},
-            {text: "확인", onPress: () => console.log("확인")}
-        ]
-    )
-}
+import { DATA } from './DATA/data.js';
 
 const App = () => {
-    return (
-        <SafeAreaView style={styles.container}>
-            <ImageBackground source={bgimg} 
-            style={styles.backgrondImage}
-            resizeMode = 'cover'>
-                    <View style={styles.body}>
-                        <View style={styles.header}>
-                            <View><Image source={x_icon} style={styles.icon}></Image></View>
-                            <View style={styles.iconRight}>
-                                <Image source={gift_icon} style={styles.icon}></Image>
-                                <Image source={qr_icon} style={styles.icon}></Image>
-                                <Image source={geer_icon} style={styles.icon}></Image>
-                            </View>
-                        </View>
-                        <View style={styles.contents}>
-                            <Image source={profile} style={styles.profile}></Image>
-                            <Text style={styles.name}>조현우</Text>
-                        </View>
-                        <View style={styles.footer}>
-                            <View style = {styles.aaa}>
-                                <Image source={speechBubble} style={styles.icon}></Image>
-                                <Text style={styles.text}>나와의 채팅</Text>
-                            </View>
-                            <View style = {styles.aaa}>
-                            <TouchableOpacity style={styles.touch} onPress={alertBottun}>
-                                <Image source={pencil} style={styles.icon}></Image>
-                                <Text style={styles.text}>프로필 편집</Text>
-                            </TouchableOpacity>
-                            </View>
-                            <View style = {styles.aaa}>
-                                <Image source={quotes} style={styles.icon}></Image>
-                                <Text style={styles.text}>카카오 스토리</Text>
-                            </View>
-                        </View>
-
-                    </View>
-            </ImageBackground>
-
-        </SafeAreaView>
-    )
-}
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        {DATA.map((item) => (
+          <TouchableOpacity key={item.id} style={styles.chatItem}>
+            <Image
+              source={require('./image/profile.png')}
+              style={styles.avatar}
+            />
+            <View style={styles.textContainer}>
+              <View style={styles.headerRow}>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.date}>{item.date}</Text>
+              </View>
+              <Text style={styles.description} numberOfLines={1}>
+                {item.description}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'row'
-    },
-    backgrondImage: {
-        flex: 1,
-        justifyContent: 'center',
-    },
-    body: {
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        flex: 1,
-        flexDirection: 'column'
-    },
-    header: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 10
-    },
-    iconRight: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'flex-end'
-    },
-    contents: {
-        flex: 12,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'flex-end'
-    },
-    footer: {
-        flex: 2,
-        flexDirection: 'row',
-        borderTopColor: 'white',
-        borderTopWidth: .5,
-        justifyContent: 'space-around'
-    },
-    icon: {
-        width: 25,
-        height: 25,
-        margin: 10
-    },
-    profile: {
-        height: 100,
-        width: 100,
-        borderRadius: 20
-    },
-    name: {
-        color: 'white',
-        fontSize: 18,
-        margin: 10,
-        marginBottom: 60
-    },
-    aaa: {
-        flex: 1,
-        flexDirection: 'column', 
-        justifyContent: 'flex-around',
-        alignItems: 'center'
-    },
-    text: {
-        color: 'white'
-    }
-})
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  scrollView: {
+    paddingBottom: 20,
+  },
+  chatItem: {
+    flexDirection: 'row',
+    padding: 14,
+    borderBottomWidth: 0.5,
+    borderColor: '#ddd',
+    backgroundColor: '#fff',
+  },
+  avatar: {
+    width: 45,
+    height: 45,
+    borderRadius: 20,
+    marginRight: 12,
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 4,
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    maxWidth: '70%',
+  },
+  date: {
+    fontSize: 12,
+    color: '#888',
+  },
+  description: {
+    fontSize: 14,
+    color: '#444',
+  },
+});
 
-export default App
+export default App;
