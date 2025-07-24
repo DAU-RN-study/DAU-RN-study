@@ -1,14 +1,23 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Touchable,
+  TouchableOpacity,
+} from 'react-native';
 
-import DATA from './DATA/DATA.json';
+import study from './DATA/DATA.json';
+// import DATA from './DATA/DATA.json';
 // import {DATA} from './DATA/DATA';
 
 const TestText = ({children, color}) => {
   return (
-    <View style={[styles.testContainer, {backgroundColor: `${color}`}]}>
+    <TouchableOpacity
+      style={[styles.testContainer, {backgroundColor: `${color}`}]}>
       <Text style={styles.testText}>{children}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -17,9 +26,9 @@ const App = () => {
     <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
       <Text
         style={{fontSize: 30, margin: 20, color: 'blue', fontWeight: '900'}}>
-        사용자 정의 컴포넌트를 만들어봅시다! {DATA.page[0].name}
+        사용자 정의 컴포넌트를 만들어봅시다! {study[0].title}
       </Text>
-      {/* <TestText color={'red'}>{DATA[1].title}</TestText> */}
+      <TestText color={'red'}></TestText>
       <TestText color={'yellow'}>children 값입니다.</TestText>
       <TestText color={'green'}>다른 prop들도 지정해서</TestText>
       <TestText color={'lavender'}>보내줄 수 있답니다!!</TestText>
