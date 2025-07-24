@@ -5,17 +5,45 @@ buildscript {
         compileSdkVersion = 34
         targetSdkVersion = 34
         ndkVersion = "25.1.8937393"
-        kotlinVersion = "1.8.0"
+        
+        // Kotlin 버전을 1.8.0 또는 1.8.20으로 다시 시도
+        // 1.9.0에서 문제가 지속되면, RN 0.73의 기본값인 1.8.x에서 다시 출발.
+        // 여기서는 1.8.0으로 설정합니다.
+        kotlinVersion = "1.8.0" // <-- 이 부분을 1.8.0으로 변경
     }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
-        classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath("com.android.tools.build:gradle:8.1.1")
+        classpath("com.facebook.react:react-native-gradle-plugin:0.73.9")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    configurations.all {
+        resolutionStrategy {
+            // AndroidX 라이브러리 버전 강제 고정 (RN 0.73.x 및 screens 3.20.0 호환 조합)
+            // 특정 버전으로 엄격하게 고정하여 충돌 방지
+            force 'androidx.appcompat:appcompat:1.6.1' // 앱컴패트
+            force 'androidx.fragment:fragment:1.5.7' // 프래그먼트
+            force 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1' // 라이프사이클
+            force 'androidx.activity:activity:1.7.0' // 액티비티
+            force 'androidx.core:core-ktx:1.10.0' // 코어 KTX
+            force 'androidx.core:core:1.10.0' // 코어
+            force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.0' // Kotlin 버전과 일치
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0' // Kotlin 버전과 일치
+            force 'androidx.startup:startup-runtime:1.1.1' // 스타트업 라이브러리 추가
+            force 'androidx.autofill:autofill:1.1.0' // autofill 추가
+            force 'androidx.browser:browser:1.5.0' // browser 추가
+        }
+    }
+}
