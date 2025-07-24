@@ -1,58 +1,92 @@
-import React from 'react'
+import React from 'react';
 import {
-	View,
-    Text,
-	StyleSheet,
-	ScrollView,
-	TouchableOpacity,
-    Linking
-} from 'react-native'
+  View,
+  Text,
+  FlatList,
+  Image,
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
+import data from './data/data.js'
 
-import study from './data/data.json'
-
-const TestText = ({ name, color, url }) => {
-  const handlePress = () => {
-    Linking.openURL(url).catch(err =>
-      console.error("URL을 열 수 없습니다:", err)
-    );
-  };
-
+const ChatItem = ({ title, description, date }) => {
   return (
-    <TouchableOpacity onPress={handlePress}>
-      <View style={[styles.testContainer, { backgroundColor: color }]}>
-        <Text style={styles.testText}>{name}</Text>
+    <TouchableOpacity style={styles.itemContainer}>
+      <Image
+        source={require('./Image/profilepic.jpg')} // 프로필 이미지 (임시)
+        style={styles.profileImage}
+      />
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>{title}</Text>
+        <Text numberOfLines={1} style={styles.description}>
+          {description}
+        </Text>
       </View>
+      <Text style={styles.date}>{date}</Text>
     </TouchableOpacity>
   );
 };
 
-const App = () => {
-	return (
-		<ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-			<Text style={{fontSize: 30, margin: 20, color: 'blue', fontWeight: '900'}}>사용자 정의 컴포넌트를 만들어봅시다!</Text>
-			<TestText color={"red"}>google{}</TestText>
-			<TestText color={"yellow"}>naver</TestText>
-			<TestText color={"green"}>daum</TestText>
-			<TestText color={"lavender"}>yahoo</TestText>
-			<TestText color={"yellowgreen"}>bing</TestText>
-			<TestText color={"white"}>zum</TestText>
-			<TestText color={"powderblue"}>nate</TestText>
-		</ScrollView>
-	)
-}
+const app = () => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <ChatItem
+            title={item.title}
+            description={item.description}
+            date={item.date}
+          />
+        )}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+      />
+    </SafeAreaView>
+  );
+};
+
+export default app;
 
 const styles = StyleSheet.create({
-	testContainer: {
-		borderRadius: 10,
-		justifyContent: 'center',
-		margin: 20
-	},
-	testText: {
-		fontSize: 25,
-		marginVertical: 10,
-		marginHorizontal: 20,
-		color: 'black'
-	}
-})
-
-export default App
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+  profileImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 15,
+    marginRight: 12,
+  },
+  textContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginBottom: 2,
+  },
+  description: {
+    fontSize: 13,
+    color: '#555',
+  },
+  date: {
+    fontSize: 12,
+    color: '#999',
+    marginLeft: 10,
+  },
+  separator: {
+    height: 0.5,
+    backgroundColor: '#e0e0e0',
+    marginHorizontal: 16,
+  },
+});
