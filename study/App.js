@@ -1,58 +1,84 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Touchable,
-  TouchableOpacity,
-} from 'react-native';
+// App.js (또는 메인 내비게이터 파일)
 
-import study from './DATA/DATA.json';
-// import DATA from './DATA/DATA.json';
-// import {DATA} from './DATA/DATA';
+import * as React from 'react';
+import {Text, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-const TestText = ({children, color}) => {
+// 각 탭에 표시될 화면 컴포넌트
+function HomeScreen() {
   return (
-    <TouchableOpacity
-      style={[styles.testContainer, {backgroundColor: `${color}`}]}>
-      <Text style={styles.testText}>{children}</Text>
-    </TouchableOpacity>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>홈 화면입니다!</Text>
+    </View>
   );
-};
+}
 
-const App = () => {
+function SettingsScreen() {
   return (
-    <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-      <Text
-        style={{fontSize: 30, margin: 20, color: 'blue', fontWeight: '900'}}>
-        사용자 정의 컴포넌트를 만들어봅시다! {study[0].title}
-      </Text>
-      <TestText color={'red'}></TestText>
-      <TestText color={'yellow'}>children 값입니다.</TestText>
-      <TestText color={'green'}>다른 prop들도 지정해서</TestText>
-      <TestText color={'lavender'}>보내줄 수 있답니다!!</TestText>
-      <TestText color={'yellowgreen'}>여기선 color 값을 보내줬어요~~</TestText>
-      <TestText color={'white'}>참 신기하죠~? 이걸 이용하면</TestText>
-      <TestText color={'powderblue'}>
-        효율적으로 코드를 짤 수 있답니다~~~
-      </TestText>
-    </ScrollView>
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>설정 화면입니다!</Text>
+    </View>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  testContainer: {
-    borderRadius: 10,
-    justifyContent: 'center',
-    margin: 20,
-  },
-  testText: {
-    fontSize: 25,
-    marginVertical: 10,
-    marginHorizontal: 20,
-    color: 'black',
-  },
-});
+function ProfileScreen() {
+  return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>프로필 화면입니다!</Text>
+    </View>
+  );
+}
 
-export default App;
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: 'tomato', // 활성화된 탭 아이콘 및 텍스트 색상
+        tabBarInactiveTintColor: 'gray', // 비활성화된 탭 아이콘 및 텍스트 색상
+        tabBarLabelStyle: {fontSize: 12}, // 탭 라벨 스타일
+        tabBarStyle: {backgroundColor: '#f0f0f0'}, // 탭 바 배경색
+      }}>
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: '홈', // 탭에 표시될 이름
+          // tabBarIcon: ({ color, size }) => ( // 탭 아이콘을 추가할 수 있습니다.
+          //   <Ionicons name="home" color={color} size={size} />
+          // ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          title: '설정',
+          // tabBarIcon: ({ color, size }) => (
+          //   <Ionicons name="settings" color={color} size={size} />
+          // ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          title: '프로필',
+          // tabBarIcon: ({ color, size }) => (
+          //   <Ionicons name="person" color={color} size={size} />
+          // ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  );
+}
