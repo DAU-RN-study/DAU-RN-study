@@ -1,194 +1,193 @@
 import React from 'react'
 import {
-    SafeAreaView,
-    Image,
-    StyleSheet,
-    Dimensions,    // 현재 디바이스의 화면 크기를 가져오는 모듈 (반응형)
     View,
     Text,
+	StyleSheet,
+	ScrollView,
+    Linking,
     TouchableOpacity,
-    Alert
+    SafeAreaView,
+	Image,
+	FlatList,
 } from 'react-native'
 
-import reactImg from './image/backgroundimg.jpg'
-import deleteImg from './image/delete.png'
-import giftImg from './image/gift.png'
-import wonImg from './image/koreanwon.png'
-import starImg from './image/star.png'
-import profileImg from './image/profileimg.jpg'
-import chatImg from './image/bubble.png'
-import callImg from './image/call.png'
-import facetalkImg from './image/facetalk.png'
+import chatData from './DATA/DATA.json';
+import chatImg from './image/week03_chat/chat.png';
+import arrowImg from './image/week03_chat/left-arrow.png';
+import magnifierImg from './image/week03_chat/magnifier.png';
+import musicImg from './image/week03_chat/music.png';
+import settingImg from './image/week03_chat/setting.png';
+import profileImg from './image/profileimg.jpg';
 
-// 현재 화면의 width와 height를 가져옴 (반응형 크기 적용용)
-const { width, height } = Dimensions.get('window');
-
-const handlePress = (buttonName) => {
-    Alert.alert(
-        "프로필 편집",
-        `${buttonName} 버튼입니다.`,
-        [
-            {
-                text: "취소",
-                onPress: () => console.log("취소 버튼을 눌렀습니다."),
-                style: "cancel"
-            },
-            {
-                text: "확인",
-                onPress: () => console.log("확인 버튼을 눌렀습니다.")
-            }
-        ]
-    )
-}
+const ChatItem = ({ item }) => (
+  <View style={styles.chatItem}>
+    <Image source={profileImg} style={styles.profileImg} />
+    <View style={styles.chatTextContainer}>
+      <View style={styles.chatHeader}>
+        <Text style={styles.chatTitle}>{item.title}</Text>
+        <Text style={styles.chatDate}>{item.date}</Text>
+      </View>
+      <Text style={styles.chatDescription}>{item.description}</Text>
+    </View>
+  </View>
+);
 
 const App = () => {
-    return (
-        <SafeAreaView style={{flex: 1}}>  
-            {/* 화면을 안전 영역까지 꽉 채우는 뷰를 생성 (flex:1은 화면 전체를 차지하라는 의미) */}
-            <Image source={reactImg} style={styles.img} />
-            {/* 어두운 반투명 레이어*/}
-            <View style={styles.overlay} />
+	return (
+        <SafeAreaView style={{flex: 1}}>
+			
+		<ScrollView style={{flex: 1, padding: 10, backgroundColor: 'white'}}>
+				{/* 상단 1 */}
+				<View style={styles.highbar}>
+						<Image source={arrowImg} style={styles.higharrow} />
+						<Text style={styles.hightext}>KakaoChat</Text>
+				</View>
 
-            <View style={styles.content}>
-                {/* 상단 */}
-                <View style={styles.high}>
-                    <View style={styles.highLeft}>
-                        <Image source={deleteImg} style={styles.highicon} />
-                    </View>
-                    <View style={styles.highRight}>
-                        <Image source={giftImg} style={styles.highicon} />
-                        <Image source={wonImg} style={styles.highicon} />
-                        <Image source={starImg} style={styles.highicon} />
-                    </View>
-                </View>
-                
-                {/* 중간 빈 공간 */}
-                <View style={styles.container}>
+				{/* 상단 2 */}
+				<View style={styles.highfunction}>
+					<View style={styles.highiconsLeft}>
+						<Text style={styles.ChatText}>채팅</Text>
+					</View>
+					<View style={styles.highiconsRight}>
+						<Image source={magnifierImg} style={styles.highicon}></Image>
+						<Image source={chatImg} style={styles.highicon}></Image>
+						<Image source={musicImg} style={styles.highicon}></Image>
+						<Image source={settingImg} style={styles.highicon}></Image>
+					</View>
+				</View>
 
-                </View>
+				{/* 상단 3 */}
+				<View>
+					<View style={styles.banner}>
+						<Text style={styles.bannerText}>광고배너</Text>
+					</View>
+				</View>
+				<FlatList
+					data={chatData}
+					renderItem={({ item }) => <ChatItem item={item} />}
+					keyExtractor={(item) => item.id.toString()}
+					contentContainerStyle={styles.chatList}
+				/>
+				
 
-                {/* 프로필 */}
-                <View style={styles.profile}>
-                    <View style={styles.profileImg}>
-                        <TouchableOpacity onPress={() => handlePress('프로필 편집')}> 
-                            <Image source={profileImg} style={styles.profileImg}/>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.profileName}>
-                        <Text style={styles.nameText}>김채은</Text>
-                    </View>
-                </View>
-
-                {/* 하단 버튼 */}
-                <View style={styles.low}>
-                    <View style={styles.lowChat}>
-                        <Image source={chatImg} style={styles.lowicon} />
-                        <Text style={styles.lowText}>1:1채팅</Text>
-                    </View>
-                    <View style={styles.lowCall}>
-                        <Image source={callImg} style={styles.lowicon} />
-                        <Text style={styles.lowText}>통화하기</Text>
-                    </View>
-                    <View style={styles.lowFacetalk}>
-                        <Image source={facetalkImg} style={styles.lowicon} />
-                        <Text style={styles.lowText}>페이스톡</Text>
-                    </View>
-
-                </View>
-                
-            </View>
-            
-
+			</ScrollView>
         </SafeAreaView>
-    )
+	)
 }
 
 const styles = StyleSheet.create({
-    img: {
-        width: width,   // 화면 가로 길이를 이미지 width에 맞춤
-        height: height, // 화면 세로 길이를 이미지 height에 맞춤
-        resizeMode: 'cover', // 이미지를 화면에 꽉 채우되, 비율은 유지 (잘릴 수 있음)
-        position: 'absolute', // 다른 컴포넌트 뒤로 배치 (배경 역할)
-    },
-    overlay: {
-        position: 'absolute', // 배경 이미지 위에 겹치도록
-        width: width,
-        height: height,
-        backgroundColor: 'rgba(0,0,0,0.2)',
-    },
-    content: {
-        flex: 1,
-        padding: 20,
-    },
-    high: {
-        flex: 1,
+	highbar: {
+		flex: 0.1,
+		flexDirection: 'row',     // 가로 정렬
+  		alignItems: 'center',     // 세로 가운데 정렬
+  		borderBottomWidth: 0.8,
+  		borderBottomColor: 'rgba(24, 18, 18, 0.71)',
+		marginBottom: 10,
+	},
+	higharrow: {
+		width: 24,
+  		height: 24,
+  		marginRight: 12,   
+		marginBottom: 5,
+	},
+	hightext: {
+		fontSize: 20,
+  		fontWeight: 'bold',
+		marginBottom: 5,
+	},
+
+	highfunction: {
+		flex: 0.1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-    },
-    highicon: {
-        width: 24,
+		marginBottom: 1,
+	},
+
+	highicon: {
+		width: 24,
         height: 24,
         marginHorizontal: 5, // 아이콘 간 여백
-        tintColor: 'white', // 원본 이미지가 단색이고 배경이 투명해야 적용됨
-    },
-    highLeft: {
-    },
-    highRight: {
-        flexDirection: 'row', 
+	},
+
+	highiconsRight: {
+		flexDirection: 'row', 
         alignItems: 'center',
-    },
-    container: {
-        flex: 10,
-    },
-    profile: {
-        flex: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    profileImg: {
-        width: 100,
-        height: 100,
-        borderRadius: 40,
-        marginBottom: 10,
-    },
-    nameText: {
-        color : 'white',
-        fontSize : 18,
-    },
-    low: {
-        flex: 3,
-        flexDirection: 'row',
-        justifyContent: 'space-around', // 같은 간격으로 배치
-        alignItems: 'center',
-        borderTopWidth: 1,           // 선 굵기
-        borderTopColor: 'rgba(255,255,255,0.3)',
-    },
-    lowChat: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    },
-    lowCall: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-    },
-    lowFacetalk: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-    },
-    lowicon: {
-        width: 30,
-        height: 30,
-        marginBottom: 10,
-        tintColor: 'white', // 원본 이미지가 단색이고 배경이 투명해야 적용됨
-    },
-    lowText: {
-    color: 'white',
-    fontSize: 14,
-    },
+	},
+
+	ChatText: {
+		fontSize: 18,
+  		fontWeight: 'bold',
+
+	},
+
+	banner: {
+		backgroundColor: '#d1d1d1ff',
+		borderRadius: 12,
+		paddingVertical: 30,
+		alignItems: 'center',
+		justifyContent: 'center',
+		marginTop: 3,    
+		marginBottom: 3, 
+	},
+
+	bannerText: {
+		fontSize: 16,
+	},
+
+	chatList: {
+    padding: 10,
+    backgroundColor: 'white',
+	},
+
+	chatItem: {
+		flexDirection: 'row',
+		marginBottom: 20,
+		alignItems: 'flex-start',
+	},
+
+	profileImg: {
+		width: 50,
+		height: 50,
+		borderRadius: 20,
+		marginRight: 12,
+	},
+	chatTextContainer: {
+		flex: 1,
+		borderBottomWidth: 0.3,
+		borderColor: '#ccc',
+		paddingBottom: 10,
+	},
+	chatHeader: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	},
+	chatTitle: {
+		fontSize: 16,
+		fontWeight: 'bold',
+	},
+	chatDate: {
+		fontSize: 12,
+		color: 'gray',
+	},
+	chatDescription: {
+		marginTop: 4,
+		fontSize: 14,
+		color: '#333',
+	},
+
+	// testContainer: {
+	// 	borderRadius: 10,
+	// 	justifyContent: 'center',
+	// 	margin: 20
+	// },
+	// testText: {
+	// 	fontSize: 25,
+	// 	marginVertical: 70,
+	// 	marginHorizontal: 20,
+	// 	color: 'black'
+	// },
+	
 })
 
 export default App
