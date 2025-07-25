@@ -69,9 +69,6 @@ const App = () => {
         </View>
       </View>
 
-      {/* 구분선 */}
-      <View style={styles.divider} />
-
       {/* 광고 배너 */}
       <TouchableOpacity style={styles.adBar} onPress={() => Linking.openURL('https://www.naver.com')}>
         <Text style={styles.adText}>광고 배너</Text>
@@ -80,10 +77,10 @@ const App = () => {
       {/* 채팅 목록 */}
       <FlatList
         data={data}
-        renderItem={renderChat}
+        renderItem={renderChat} // 채팅 하나씩 렌더링링
         keyExtractor={(item) => item.id.toString()}
-        ItemSeparatorComponent={() => <View style={styles.divider} />}
-        contentContainerStyle={{ paddingBottom: 10 }}
+        ItemSeparatorComponent={() => <View style={styles.divider} />} 
+        //contentContainerStyle={{ paddingBottom: 5 }}
       />
     </SafeAreaView>
   );
@@ -136,7 +133,7 @@ const styles = StyleSheet.create({
   divider: {
     height: 1,
     backgroundColor: 'gray',
-    marginVertical: 5,
+    marginVertical: 4,
   },
   adBar: {
     height: 60,
