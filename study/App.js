@@ -17,13 +17,13 @@ const showAlert = (btnName) => {
 const App = () => {
     return (
             <ImageBackground
-                source={require('./dugi.jpg')}
+                source={require('./image/dugi.jpg')}
                 style={styles.background}
             >
                 {/*상단 헤더 영역*/}
                 <View style={styles.topBar}>
                     <TouchableOpacity onPress={() => showAlert("뒤로가기")}>
-                        <Image source={require('./left.png')} style={styles.img}/>
+                        <Image source={require('./image/left.png')} style={styles.img}/>
                     </TouchableOpacity>
 
                     <Text style={styles.Text}>KakaoProfile</Text>
@@ -32,21 +32,21 @@ const App = () => {
                 <View style={styles.topBar1}>
                     <View style={styles.topBar11}>
                         <TouchableOpacity onPress={() => showAlert("X")}>
-                            <Image source={require('./x.png')} style={{width:30, height:30, resizeMode:'contain'}}></Image>
+                            <Image source={require('./image/x.png')} style={{width:30, height:30, resizeMode:'contain'}}></Image>
                         </TouchableOpacity>
                     </View>
 
                     <View style={styles.topBar12}>
                         <TouchableOpacity onPress={() => showAlert("선물")}>
-                                <Image source={require('./gift.png')} style={{width:30, height:30, marginRight:20, resizeMode:'contain'}}></Image>
+                                <Image source={require('./image/gift.png')} style={{width:30, height:30, marginRight:20, resizeMode:'contain'}}></Image>
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => showAlert("큐알")}>
-                                <Image source={require('./qr.png')} style={{width:30, height:30, marginRight:20, resizeMode:'contain'}}></Image>
+                                <Image source={require('./image/qr.png')} style={{width:30, height:30, marginRight:20, resizeMode:'contain'}}></Image>
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => showAlert("설정")}>
-                                <Image source={require('./setting.png')} style={{width:30, height:30, marginRight:7, resizeMode:'contain'}}></Image>
+                                <Image source={require('./image/setting.png')} style={{width:30, height:30, marginRight:7, resizeMode:'contain'}}></Image>
                         </TouchableOpacity>
                     </View>
 
@@ -54,7 +54,7 @@ const App = () => {
 
                 <View style={styles.midBar}>
                     <TouchableOpacity onPress={() => showAlert("프로필 사진")}>
-                        <Image source={require('./ganadi.png')} style={{width:150, height:150, borderRadius:40, resizeMode:'contain'}}></Image>
+                        <Image source={require('./image/ganadi.png')} style={{width:150, height:150, borderRadius:40, resizeMode:'contain'}}></Image>
                     </TouchableOpacity>
 
                     <Text style={[styles.Text, {marginTop:15, marginBottom:30}]}>장유승</Text>
@@ -65,21 +65,21 @@ const App = () => {
                 <View style={styles.lowBar}>
                     <TouchableOpacity onPress={() => showAlert("나와의 채팅")}>
                         <View style={styles.iconWithText}>
-                            <Image source={require('./speech_bubble.png')} style={{width:30, height:30, resizeMode:'contain', marginBottom:10}}></Image>
+                            <Image source={require('./image/speech_bubble.png')} style={{width:30, height:30, resizeMode:'contain', marginBottom:10}}></Image>
                             <Text style={{fontSize:14, color:'black', marginBottom:30}}>나와의 채팅</Text>
                         </View>
                     </TouchableOpacity>
                     
                     <TouchableOpacity onPress={() => showAlert("프로필 편집")}>
                         <View style={styles.iconWithText}>
-                            <Image source={require('./pencil.png')} style={{width:30, height:30, resizeMode:'contain', marginBottom:10}}></Image>
+                            <Image source={require('./image/pencil.png')} style={{width:30, height:30, resizeMode:'contain', marginBottom:10}}></Image>
                             <Text style={{fontSize:14, color:'black', marginBottom:30}}>프로필 편집</Text>
                         </View>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={() => showAlert("카카오스토리")}>
                         <View style={styles.iconWithText}>
-                            <Image source={require('./kakaostory.png')} style={{width:30, height:30, resizeMode:'contain', marginBottom:10}}></Image>
+                            <Image source={require('./image/kakaostory.png')} style={{width:30, height:30, resizeMode:'contain', marginBottom:10}}></Image>
                             <Text style={{fontSize:14, color:'black', marginBottom:30}}>카카오스토리</Text>
                         </View>
                     </TouchableOpacity>
