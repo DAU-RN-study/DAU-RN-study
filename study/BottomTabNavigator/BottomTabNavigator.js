@@ -2,7 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 // 컴포넌트 경로
-import HomeScreen from '../components/HomeScreen/HomeScreen';
+import HomeStack from '../components/HomeScreen/HomeNavigator/HomeStackNavigator';
 import ProfileScreen from '../components/ProfileScreen/ProfileScreen';
 import SettingsScreen from '../components/SettingScreen/SettingScreen';
 
@@ -19,7 +19,7 @@ export default function Navigator() {
       }}>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStack}
         options={{
           title: '홈', // 탭에 표시될 이름
           // tabBarIcon: ({ color, size }) => ( // 탭 아이콘을 추가할 수 있습니다.
