@@ -1,162 +1,76 @@
+// import React from 'react';
+// import {NavigationContainer} from '@react-navigation/native';
+// import BottomTabNavigator from './BottomTabNavigator/BottomTabNavigator';
+
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <BottomTabNavigator />
+//     </NavigationContainer>
+//   );
+// }
+
 import React from 'react'
 import {
-    SafeAreaView,
-    TouchableOpacity,
-    Text,
-    StyleSheet,
-    Alert,
-    ImageBackground,
-    View,
-    Image
+	View,
+  Text,
+	StyleSheet,
+	ScrollView,
+  TouchableOpacity,
+  Linking
 } from 'react-native'
 
-const showAlert = (btnName) => {
-    Alert.alert(btnName,`${btnName} 버튼입니다.`)
+import DATA from './DATA/DATA.json'
+
+const SearchButton = ({ name, url, color }) => {
+	return (
+		<TouchableOpacity style={[styles.button, {backgroundColor: color}]} onPress={() => Linking.openURL(url)}>
+			<Text style={styles.buttonText}>Go to {name}</Text>
+		</TouchableOpacity>
+	)
 }
 
 const App = () => {
-    return (
-            <ImageBackground
-                source={require('./image/dugi.jpg')}
-                style={styles.background}
-            >
-                {/*상단 헤더 영역*/}
-                <View style={styles.topBar}>
-                    <TouchableOpacity onPress={() => showAlert("뒤로가기")}>
-                        <Image source={require('./image/left.png')} style={styles.img}/>
-                    </TouchableOpacity>
+	return (
+		<ScrollView style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={styles.header}>
+			  <Text style={styles.title}>검색 엔진 모음</Text>
+			</View>
 
-                    <Text style={styles.Text}>KakaoProfile</Text>
-                </View>
-
-                <View style={styles.topBar1}>
-                    <View style={styles.topBar11}>
-                        <TouchableOpacity onPress={() => showAlert("X")}>
-                            <Image source={require('./image/x.png')} style={{width:30, height:30, resizeMode:'contain'}}></Image>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={styles.topBar12}>
-                        <TouchableOpacity onPress={() => showAlert("선물")}>
-                                <Image source={require('./image/gift.png')} style={{width:30, height:30, marginRight:20, resizeMode:'contain'}}></Image>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() => showAlert("큐알")}>
-                                <Image source={require('./image/qr.png')} style={{width:30, height:30, marginRight:20, resizeMode:'contain'}}></Image>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() => showAlert("설정")}>
-                                <Image source={require('./image/setting.png')} style={{width:30, height:30, marginRight:7, resizeMode:'contain'}}></Image>
-                        </TouchableOpacity>
-                    </View>
-
-                </View>
-
-                <View style={styles.midBar}>
-                    <TouchableOpacity onPress={() => showAlert("프로필 사진")}>
-                        <Image source={require('./image/ganadi.png')} style={{width:150, height:150, borderRadius:40, resizeMode:'contain'}}></Image>
-                    </TouchableOpacity>
-
-                    <Text style={[styles.Text, {marginTop:15, marginBottom:30}]}>장유승</Text>
-
-                    <View style={styles.divider}></View>
-                </View>
-
-                <View style={styles.lowBar}>
-                    <TouchableOpacity onPress={() => showAlert("나와의 채팅")}>
-                        <View style={styles.iconWithText}>
-                            <Image source={require('./image/speech_bubble.png')} style={{width:30, height:30, resizeMode:'contain', marginBottom:10}}></Image>
-                            <Text style={{fontSize:14, color:'black', marginBottom:30}}>나와의 채팅</Text>
-                        </View>
-                    </TouchableOpacity>
-                    
-                    <TouchableOpacity onPress={() => showAlert("프로필 편집")}>
-                        <View style={styles.iconWithText}>
-                            <Image source={require('./image/pencil.png')} style={{width:30, height:30, resizeMode:'contain', marginBottom:10}}></Image>
-                            <Text style={{fontSize:14, color:'black', marginBottom:30}}>프로필 편집</Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => showAlert("카카오스토리")}>
-                        <View style={styles.iconWithText}>
-                            <Image source={require('./image/kakaostory.png')} style={{width:30, height:30, resizeMode:'contain', marginBottom:10}}></Image>
-                            <Text style={{fontSize:14, color:'black', marginBottom:30}}>카카오스토리</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-            </ImageBackground>
-    )
+      {DATA.page.map((item, index) => (
+        <SearchButton
+          key={index}
+          name={item.name}
+          url={item.url}
+          color={item.mainColor}
+          />
+      ))}
+		</ScrollView>
+	)
 }
 
 const styles = StyleSheet.create({
-    background: {
-        flex:1,
-        flexDirection:'column'
-    },
-    topBar:{
-        flex:1,
-        flexDirection:'row',
-        justifyContent:'flex-start',
-        alignItems:'center',
-        paddingHorizontal: 10,
-        paddingVertical: 6,
-        backgroundColor:'white'
-    },
-    img:{
-        height:30,
-        width:30,
-        marginRight:10,
-        resizeMode:'contain'
-    },
-    Text:{
-        fontSize:18,
-        marginLeft:20,
-        color:'black'
-    },
-    topBar1:{
-        flex:1.5,
-        flexDirection:'row',
-        alignItems:'center'
-    },
-    topBar11:{
-        flex:1,
-        flexDirection:'row',
-        justifyContent:'flex-start',
-        alignItems:'center',
-        paddingVertical:30,
-        paddingHorizontal:15
-    },
-    topBar12:{
-        flex:5,
-        flexDirection:'row',
-        justifyContent:'flex-end',
-        alignItems:'center',
-        paddingHorizontal:10,
-        paddingVertical:15,    
-  
-    },
-    midBar:{
-        flex:25,
-        flexDirection:'column',
-        justifyContent:'flex-end',
-        alignItems:'center'
-    },
-    divider:{
-        width:'100%',
-        height:1,
-        backgroundColor:'#ccc',
-        marginVertical: 1
-    },
-    lowBar:{
-        flex:5,
-        flexDirection:'row',
-        justifyContent:'space-around',
-        alignItems:'flex-end'
-    },
-    iconWithText:{
-        justifyContent:'center',
-        alignItems:'center',
-    }
+  header:{
+    alignItems:'center',
+    marginTop: 30
+  },
+	title: {
+    fontSize: 30,
+    color: 'gray',
+    fontWeight: '500'
+	},
+	button: {
+		margin: 30,
+    borderRadius: 30,
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+    alignItems: 'center'
+	},
+  buttonText: {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: '600'
+  }
 })
 
 export default App
